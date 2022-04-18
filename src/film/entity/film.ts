@@ -112,11 +112,11 @@ export class Film {
 
     @Prop({ type: String })
     @ApiProperty({ example: 'https://test.de/', type: String })
-    readonly homtepage: string | null | undefined;
+    readonly homepage: string | null | undefined;
 
     // Metainformationen sind fuer Arrays und geschachtelte Objekte nicht verfuegbar
     @Prop({ type: [String], sparse: true })
-    @ApiProperty({ example: ['JAVASCRIPT', 'TYPESCRIPT'] })
+    @ApiProperty({ example: ['SPANNEND', 'GRUSELIG', 'LIEBE'] })
     readonly schlagwoerter: string[] | null | undefined;
 }
 
@@ -179,12 +179,9 @@ export const collectionName = modelName;
 
 export const exactFilterProperties = [
     'rating',
-    'art',
-    'herausgeber',
-    'preis',
-    'rabatt',
-    'lieferbar',
+    'genre',
+    'studio',
+    'online',
     'datum',
-    'isan',
     'homepage',
 ];
