@@ -30,4 +30,4 @@ export {
     collectionName,
     exactFilterProperties,
     modelName,
-} from './buch';
+} from './film';
