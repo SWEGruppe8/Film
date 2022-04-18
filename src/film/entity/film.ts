@@ -35,12 +35,12 @@ import { dbConfig } from '../../config';
 /**
  * Alias-Typ für gültige Strings bei Herausgebern.
  */
-export type Studio = 'Disney' | 'Warner Bros.' | 'Universal Studios' ;
+export type Studio = 'DISNEY' | 'WARNER BROS' | 'UNIVERSAL STUDIOS' ;
 
 /**
  * Alias-Typ für gültige Strings bei der Art eines Filmes.
  */
-export type Genre = 'Comedy' | 'Action' | 'Romance';
+export type Genre = 'COMEDY' | 'ACTION' | 'ROMANCE';
 
 SchemaType.set('debug', true);
 
@@ -93,12 +93,12 @@ export class Film {
     @ApiProperty({ example: 5, type: Number })
     readonly rating: number | null | undefined;
 
-    @Prop({ type: String, enum: ['Comedy', 'Action','Romance'] })
-    @ApiProperty({ example: 'Comedy', type: String })
+    @Prop({ type: String, enum: ['COMEDY', 'ACTION','ROMANCE'] })
+    @ApiProperty({ example: 'COMEDY', type: String })
     readonly genre: Genre | '' | null | undefined;
 
-    @Prop({ type: String, required: true, enum: ['Disney', 'Warner Bros.', 'Universal Studio'] })
-    @ApiProperty({ example: 'Disney', type: String })
+    @Prop({ type: String, required: true, enum: ['DISNEY', 'WARNER BROS', 'UNIVERSIAL STUDIOS'] })
+    @ApiProperty({ example: 'DISNEY', type: String })
     readonly studio: Studio | '' | null | undefined;
 
     @Prop({ type: Boolean })
