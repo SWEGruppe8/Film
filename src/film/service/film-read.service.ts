@@ -61,7 +61,7 @@ export class FilmReadService {
             return this.#findAll();
         }
 
-        const { titel, javascript, typescript, ...dbFilter } = filter;
+        const { titel, spannend, gruselig, liebe, ...dbFilter } = filter;
         if (this.#checkInvalidProperty(dbFilter)) {
             return [];
         }
@@ -79,11 +79,14 @@ export class FilmReadService {
         }
 
         const schlagwoerter = [];
-        if (javascript === 'true') {
-            schlagwoerter.push('JAVASCRIPT');
+        if (spannend === 'true') {
+            schlagwoerter.push('SPANNEND');
         }
-        if (typescript === 'true') {
-            schlagwoerter.push('TYPESCRIPT');
+        if (gruselig === 'true') {
+            schlagwoerter.push('GRUSELIG');
+        }
+        if (liebe === 'true') {
+            schlagwoerter.push('LIEBE');
         }
         if (schlagwoerter.length === 0) {
             if (Array.isArray(dbFilter.schlagwoerter)) {
