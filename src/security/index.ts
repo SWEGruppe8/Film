@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 - present Juergen Zimmermann, Hochschule Karlsruhe
+ * Copyright (C) 2019 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,11 +16,28 @@
  */
 
 /**
- * Das Modul besteht aus den Klassen für RBAC (= roles-based access control).
+ * Das Modul besteht aus Security-Funktionen durch das npm-Package Helmet und
+ * Funktionen für CORS.
  * @packageDocumentation
  */
 
- export { ROLES_KEY, Roles } from './roles.decorator.js';
- export { RolesGuard } from './roles.guard.js';
- export { RolesGraphQlGuard } from './roles-graphql.guard.js';
- 
+ export {
+    ROLES_KEY,
+    AuthService,
+    JwtAuthGuard,
+    JwtAuthGraphQlGuard,
+    JwtStrategy,
+    LocalAuthGuard,
+    LocalStrategy,
+    type LoginResult,
+    type RequestWithUser,
+    Roles,
+    RolesGuard,
+    RolesGraphQlGuard,
+    NoTokenError,
+    type Role,
+    type User,
+    UserInvalidError,
+    UserService,
+} from './auth/index.js';
+export { corsOptions, helmetHandlers } from './http/index.js';
