@@ -72,9 +72,9 @@ export class FilmMutationResolver {
     @Mutation()
     @Roles('admin', 'mitarbeiter')
     async create(@Args() input: Film) {
-        this.#logger.debug('createBuch: input=%o', input);
+        this.#logger.debug('createFilm: input=%o', input);
         const result = await this.#service.create(input);
-        this.#logger.debug('createBuch: result=%o', result);
+        this.#logger.debug('createFilm: result=%o', result);
         if (Object.prototype.hasOwnProperty.call(result, 'type')) {
             // UserInputError liefert Statuscode 200
             throw new UserInputError(
@@ -128,7 +128,7 @@ export class FilmMutationResolver {
             case 'TitelExists':
                 return `Der Titel "${err.titel}" existiert bereits`;
             case 'FilmNotExists':
-                return `Es gibt kein Buch mit der ID ${err.id}`;
+                return `Es gibt kein Film mit der ID ${err.id}`;
             case 'VersionInvalid':
                 return `"${err.version}" ist keine gueltige Versionsnummer`;
             case 'VersionOutdated':
