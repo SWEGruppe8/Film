@@ -35,12 +35,12 @@ import { dbConfig } from '../../config';
 /**
  * Alias-Typ für gültige Strings bei Herausgebern.
  */
-export type Herausgeber = 'BAR_HERAUSGEBER' | 'FOO_HERAUSGEBER';
+export type Studio = 'Disney' | 'Warner Bros.' | 'Universal Studios' ;
 
 /**
  * Alias-Typ für gültige Strings bei der Art eines Filmes.
  */
-export type FilmArt = 'ULTRAHD' | 'AMAZON';
+export type Genre = 'Comedy' | 'Action' | 'Romance';
 
 SchemaType.set('debug', true);
 
@@ -86,45 +86,33 @@ const MONGOOSE_OPTIONS: SchemaOptions = {
 @Schema(MONGOOSE_OPTIONS)
 export class Film {
     @Prop({ type: String, required: true, unique: true })
-    @ApiProperty({ example: 'Der Titel', type: String })
+    @ApiProperty({ example: 'Titel', type: String })
     readonly titel: string | null | undefined; //NOSONAR
 
     @Prop({ type: Number, min: 0, max: 5 })
     @ApiProperty({ example: 5, type: Number })
     readonly rating: number | null | undefined;
 
-    @Prop({ type: String, enum: ['ULTRAHD', 'AMAZON'] })
-    @ApiProperty({ example: 'ULTRAHD', type: String })
-    readonly art: FilmArt | '' | null | undefined;
+    @Prop({ type: String, enum: ['Comedy', 'Action','Romance'] })
+    @ApiProperty({ example: 'Comedy', type: String })
+    readonly genre: Genre | '' | null | undefined;
 
-    @Prop({ type: String, required: true, enum: ['FOO_HERAUSGEBER', 'BAR_HERAUSGEBER'] })
-    @ApiProperty({ example: 'FOO_HERAUSGEBER', type: String })
-    readonly verlag: Herausgeber | '' | null | undefined;
-
-    @Prop({ type: Number, required: true })
-    @ApiProperty({ example: 1, type: Number })
-    readonly preis: number | undefined;
-
-    @Prop({ type: Number })
-    @ApiProperty({ example: 0.1, type: Number })
-    readonly rabatt: number | undefined;
+    @Prop({ type: String, required: true, enum: ['Disney', 'Warner Bros.', 'Universal Studio'] })
+    @ApiProperty({ example: 'Disney', type: String })
+    readonly studio: Studio | '' | null | undefined;
 
     @Prop({ type: Boolean })
     @ApiProperty({ example: true, type: Boolean })
-    readonly lieferbar: boolean | undefined;
+    readonly online: boolean | undefined;
 
     // das Temporal-API ab ES2022 wird von Mongoose noch nicht unterstuetzt
     @Prop({ type: Date })
     @ApiProperty({ example: '2021-01-31' })
     readonly datum: Date | string | undefined;
 
-    @Prop({ type: String, required: true, unique: true, immutable: true })
-    @ApiProperty({ example: '0-0070-0644-6', type: String })
-    readonly isan: string | null | undefined;
-
     @Prop({ type: String })
     @ApiProperty({ example: 'https://test.de/', type: String })
-    readonly homepage: string | null | undefined;
+    readonly homtepage: string | null | undefined;
 
     // Metainformationen sind fuer Arrays und geschachtelte Objekte nicht verfuegbar
     @Prop({ type: [String], sparse: true })
@@ -177,7 +165,7 @@ export const filmSchema = SchemaFactory.createForClass(Film);
 // Indexe anlegen (max. 3 bei Atlas)
 // hier: aufsteigend (1) sowie "unique" oder "sparse"
 filmSchema.index({ titel: 1 }, { unique: true, name: 'titel' });
-filmSchema.index({ herausgeber: 1 }, { name: 'herausgeber' });
+filmSchema.index({ studio: 1 }, { name: 'studio' });
 filmSchema.index({ schlagwoerter: 1 }, { sparse: true, name: 'schlagwoerter' });
 
 // Document: _id (vom Type ObjectID) und __v als Attribute
