@@ -224,13 +224,13 @@ export class FilmGetController {
     /**
      * Filme werden mit Query-Parametern asynchron gesucht. Falls es mindestens
      * ein solchen Film gibt, wird der Statuscode `200` (`OK`) gesetzt. Im Rumpf
-     * des Response ist das JSON-Array mit den gefundenen Büchern, die jeweils
+     * des Response ist das JSON-Array mit den gefundenen Filmen, die jeweils
      * um Atom-Links für HATEOAS ergänzt sind.
      *
      * Falls es kein Film zu den Suchkriterien gibt, wird der Statuscode `404`
      * (`Not Found`) gesetzt.
      *
-     * Falls es keine Query-Parameter gibt, werden alle Bücher ermittelt.
+     * Falls es keine Query-Parameter gibt, werden alle Filme ermittelt.
      *
      * @param query Query-Parameter von Express.
      * @param req Request-Objekt von Express.
@@ -238,8 +238,8 @@ export class FilmGetController {
      * @returns Leeres Promise-Objekt.
      */
     @Get()
-    @ApiOperation({ summary: 'Bücher mit Suchkriterien suchen' })
-    @ApiOkResponse({ description: 'Eine evtl. leere Liste mit Büchern' })
+    @ApiOperation({ summary: 'Filme mit Suchkriterien suchen' })
+    @ApiOkResponse({ description: 'Eine evtl. leere Liste mit Filme' })
     async find(
         @Query() query: FilmQuery,
         @Req() req: Request,
