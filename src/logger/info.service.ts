@@ -30,7 +30,7 @@
          const isK8s = k8sConfig.detected;
          let plattform: string;
          if (isK8s) {
-             plattform = `Kubernetes: BUCH_SERVICE_HOST=${serviceHost}, BUCH_SERVICE_PORT=${servicePort}`;
+             plattform = `Kubernetes: FILM_SERVICE_HOST=${serviceHost}, FILM_SERVICE_PORT=${servicePort}`;
          } else if (cloud === 'heroku') {
              plattform = 'Heroku';
          } else {
