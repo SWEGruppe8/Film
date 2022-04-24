@@ -1,0 +1,10 @@
+{
+  "titel": "Harry Potter",
+  "rating": -1,
+  "genre": "MAGIE",
+  "studio": "WARNER BROS",
+  "online": true,
+  "datum": "2001-07-07",
+  "homepage": "https://harry.de",
+  "schlagwoerter": ["VERRÜCKT"]
+}

@@ -1,0 +1,68 @@
+@startuml Komponenten
+
+left to right direction
+
+actor RESTClient
+actor GraphQLClient
+
+node "Nest" {
+  [RequestLoggerMiddleware]
+
+  [BuchController]
+  [BuchResolver]
+  [BuchFileController]
+
+  [BuchService]
+  [BuchFileService]
+
+  [Buch]
+
+  [MailService]
+}
+
+
+cloud {
+    [Mongoose]
+}
+
+cloud {
+    [MongoDB\nNative Driver]
+}
+
+cloud {
+    [nodemailer]
+}
+
+database "acme (MongoDB)" {
+    [Collection Buch]
+    [GridFS]
+}
+
+node {
+    [Mailserver]
+}
+
+RESTClient ~~> [RequestLoggerMiddleware]
+GraphQLClient ~~> [RequestLoggerMiddleware]
+
+[RequestLoggerMiddleware] ~~> [BuchController]
+[RequestLoggerMiddleware] ~~> [BuchResolver]
+[RequestLoggerMiddleware] ~~> [BuchFileController]
+
+[BuchController] --> [BuchService]
+[BuchResolver] --> [BuchService]
+[BuchFileController] --> [BuchFileService]
+[BuchService] ..> [Buch]
+
+[Buch] ~~> [Mongoose]
+[BuchFileService] ~~> [MongoDB\nNative Driver]
+[Mongoose] ~~> [Collection Buch]
+[MongoDB\nNative Driver] ~~> [GridFS]
+
+[BuchService] --> [MailService]
+[MailService] --> [nodemailer]
+[nodemailer] ~~> [Mailserver]
+
+footer (c) Jürgen Zimmermann
+
+@enduml

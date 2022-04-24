@@ -72,7 +72,6 @@ export class FilmReadService {
             typeof titel === 'string'
         ) {
             dbFilter.titel =
-                // TODO Komplexitaet des regulaeren Ausrucks analysieren
                 titel.length < 10
                     ? new RegExp(titel, 'iu')
                     : titel;
