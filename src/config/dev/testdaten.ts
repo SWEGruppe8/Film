@@ -1,5 +1,4 @@
-// eslint-disable-next-line eslint-comments/disable-enable-pair
-/* eslint-disable prettier/prettier */
+/*eslint linebreak-style: ["error", "unix"]*/
 /*
  * Copyright (C) 2020 - present Juergen Zimmermann, Hochschule Karlsruhe
  *

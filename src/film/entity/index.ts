@@ -14,4 +14,4 @@ export {
     collectionName,
     exactFilterProperties,
     modelName,
-} from "./film";
+} from './film';
