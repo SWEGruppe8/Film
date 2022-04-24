@@ -156,12 +156,11 @@ describe('POST /api', () => {
                 'Der Verlag eines Filmes muss FOO_VERLAG oder BAR_VERLAG sein.',
                 'Der Rabatt muss ein Wert zwischen 0 und 1 sein.',
                 'Das Datum muss im Format yyyy-MM-dd sein.',
-                'Die ISBN-Nummer ist nicht korrekt.',
             ]),
         );
     });
 
-    test('Neues Film, aber der Titel existiert bereits', async () => {
+    test('Neuer Film, aber der Titel existiert bereits', async () => {
         // given
         const token = await loginRest(client);
         headers.Authorization = `Bearer ${token}`;
