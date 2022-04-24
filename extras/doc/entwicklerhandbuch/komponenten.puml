@@ -28,9 +28,6 @@ cloud {
     [MongoDB\nNative Driver]
 }
 
-cloud {
-    [nodemailer]
-}
 
 database "acme (MongoDB)" {
     [Collection Film]
