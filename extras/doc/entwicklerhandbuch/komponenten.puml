@@ -8,16 +8,15 @@ actor GraphQLClient
 node "Nest" {
   [RequestLoggerMiddleware]
 
-  [BuchController]
-  [BuchResolver]
-  [BuchFileController]
+  [FilmController]
+  [FilmResolver]
+  [FilmFileController]
 
-  [BuchService]
-  [BuchFileService]
+  [FilmService]
+  [FilmFileService]
 
-  [Buch]
+  [Film]
 
-  [MailService]
 }
 
 
@@ -34,34 +33,27 @@ cloud {
 }
 
 database "acme (MongoDB)" {
-    [Collection Buch]
+    [Collection Film]
     [GridFS]
 }
 
-node {
-    [Mailserver]
-}
 
 RESTClient ~~> [RequestLoggerMiddleware]
 GraphQLClient ~~> [RequestLoggerMiddleware]
 
-[RequestLoggerMiddleware] ~~> [BuchController]
-[RequestLoggerMiddleware] ~~> [BuchResolver]
-[RequestLoggerMiddleware] ~~> [BuchFileController]
+[RequestLoggerMiddleware] ~~> [FilmController]
+[RequestLoggerMiddleware] ~~> [FilmResolver]
+[RequestLoggerMiddleware] ~~> [FilmFileController]
 
-[BuchController] --> [BuchService]
-[BuchResolver] --> [BuchService]
-[BuchFileController] --> [BuchFileService]
-[BuchService] ..> [Buch]
+[FilmController] --> [FilmService]
+[FilmResolver] --> [FilmService]
+[FilmFileController] --> [FilmFileService]
+[FilmService] ..> [Film]
 
-[Buch] ~~> [Mongoose]
-[BuchFileService] ~~> [MongoDB\nNative Driver]
-[Mongoose] ~~> [Collection Buch]
+[Film] ~~> [Mongoose]
+[FilmFileService] ~~> [MongoDB\nNative Driver]
+[Mongoose] ~~> [Collection Film]
 [MongoDB\nNative Driver] ~~> [GridFS]
-
-[BuchService] --> [MailService]
-[MailService] --> [nodemailer]
-[nodemailer] ~~> [Mailserver]
 
 footer (c) Jürgen Zimmermann
 

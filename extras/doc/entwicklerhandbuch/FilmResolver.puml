@@ -42,40 +42,40 @@ package security.auth {
   Roles ..> Role
 }
 
-package buch #DDDDDD {
+package film #DDDDDD {
   package entity #FFFFFF {
-    class Buch <<entity>>
+    class Film <<entity>>
   }
 
   package service #FFFFFF {
-    class BuchService << control >>
+    class FilmService << control >>
   }
 
-  class "type BuchDTO = Buch & { id?: string; version?: number; }" as BuchDTO
-  hide BuchDTO circle
+  class "type FilmDTO = Film & { id?: string; version?: number; }" as FilmDTO
+  hide FilmDTO circle
 
-  BuchResolver o-down-> "1" BuchService : service
-  BuchResolver ..> Buch
+  FilmResolver o-down-> "1" FilmService : service
+  FilmResolver ..> Film
 
-  BuchResolver .up.> Resolver
-  BuchResolver .up.> UseGuards
-  BuchResolver .up.> UseInterceptors
-  BuchResolver .up.> Query
-  BuchResolver .up.> Mutation
-  BuchResolver .up.> Args
+  FilmResolver .up.> Resolver
+  FilmResolver .up.> UseGuards
+  FilmResolver .up.> UseInterceptors
+  FilmResolver .up.> Query
+  FilmResolver .up.> Mutation
+  FilmResolver .up.> Args
 
-  BuchResolver .up.> Roles
-  BuchResolver .up.> Role
+  FilmResolver .up.> Roles
+  FilmResolver .up.> Role
 
-  BuchResolver ..> BuchDTO
+  FilmResolver ..> FilmDTO
 
-  BuchResolver .up.> Promise
+  FilmResolver .up.> Promise
 
-  class BuchResolver << control >> << @Resolver() >> << @UseGuards() >> << @UseInterceptors() >> {
-    + @Query async findById(@Args() id: string): Promise<BuchDTO>
-    + @Query async find(@Args() titel: string |undefined): Promise<BuchDTO[]>
-    + @Mutation @Roles() async create(@Args() buch: Buch): Promise<string>
-    + @Mutation @Roles() async update(@Args() buch: BuchDTO): Promise<number>
+  class FilmResolver << control >> << @Resolver() >> << @UseGuards() >> << @UseInterceptors() >> {
+    + @Query async findById(@Args() id: string): Promise<FilmDTO>
+    + @Query async find(@Args() titel: string |undefined): Promise<FilmDTO[]>
+    + @Mutation @Roles() async create(@Args() film: Film): Promise<string>
+    + @Mutation @Roles() async update(@Args() film: FilmDTO): Promise<number>
     + @Mutation @Roles() async delete(@Args() id: string): Promise<boolean>
   }
 }
