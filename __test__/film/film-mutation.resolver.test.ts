@@ -62,7 +62,7 @@ describe('GraphQL Mutations', () => {
     });
 
     // -------------------------------------------------------------------------
-    test('Neues Film', async () => {
+    test('Neuer Film', async () => {
         // given
         const token = await loginGraphQL(client);
         const authorization = { Authorization: `Bearer ${token}` }; // eslint-disable-line @typescript-eslint/naming-convention
@@ -70,17 +70,14 @@ describe('GraphQL Mutations', () => {
             query: `
                 mutation {
                     create(
-                        titel: "Test",
+                        titel: 'Test',
                         rating: 1,
-                        art: KINDLE,
-                        verlag: FOO_VERLAG,
-                        preis: 11.1,
-                        rabatt: 0.011,
-                        lieferbar: true,
-                        datum: "2021-01-31",
-                        isbn: "3897225832",
-                        homepage: "http://acme.com",
-                        schlagwoerter: ["JAVASCRIPT"]
+                        genre: 'COMEDY',
+                        studio: 'DISNEY',
+                        online: true,
+                        datum: '2000-11-05',
+                        homepage: 'https://test.de',
+                        schlagwoerter: ['SPANNEND'],
                     )
                 }
             `,
@@ -108,7 +105,7 @@ describe('GraphQL Mutations', () => {
     });
 
     // -------------------------------------------------------------------------
-    test('Neues Film nur als "admin"/"mitarbeiter"', async () => {
+    test('Neuer Film nur als "admin"/"mitarbeiter"', async () => {
         // given
         const token = await loginGraphQL(client, 'dirk.delta', 'p');
         const authorization = { Authorization: `Bearer ${token}` }; // eslint-disable-line @typescript-eslint/naming-convention
@@ -118,15 +115,12 @@ describe('GraphQL Mutations', () => {
                     create(
                         titel: "Nichtadmin",
                         rating: 1,
-                        art: KINDLE,
-                        verlag: FOO_VERLAG,
-                        preis: 11.1,
-                        rabatt: 0.011,
-                        lieferbar: true,
+                        genre: ACTION,
+                        studio: UNIVERSAL STUDIOS,
+                        online: true,
                         datum: "2021-01-31",
-                        isbn: "9783663087465",
-                        homepage: "http://acme.com",
-                        schlagwoerter: ["JAVASCRIPT"]
+                        homepage: "https://acme.com",
+                        schlagwoerter: ["GRUSELIG"]
                     )
                 }
             `,
@@ -166,22 +160,19 @@ describe('GraphQL Mutations', () => {
             query: `
                 mutation {
                     update(
-                        id: "000000000000000000000003",
+                        id: "000000000000000000000040",
                         version: 0,
                         film: {
                             titel: "Geaendert",
-                            rating: 5,
-                            art: DRUCKAUSGABE,
-                            verlag: FOO_VERLAG,
-                            preis: 99.99,
-                            rabatt: 0.099,
-                            lieferbar: false,
+                            rating: 2,
+                            genre: ACTION,
+                            studio: WARNER BROS,
+                            online: false,
                             datum: "2021-01-02",
-                            isbn: "9780201633610",
-                            homepage: "https://acme.com",
+                            homepage: "https://moon.com",
                             schlagwoerter: [
-                                "JAVASCRIPT",
-                                "TYPESCRIPT"
+                                "SPANNEND",
+                                "GRUELIG"
                             ]
                         }
                     )
@@ -224,15 +215,12 @@ describe('GraphQL Mutations', () => {
                         film: {
                             titel: "?!$",
                             rating: 999,
-                            art: KINDLE,
-                            verlag: FOO_VERLAG,
-                            preis: -999,
-                            rabatt: 999,
-                            lieferbar: false,
+                            genre: ROMANCE,
+                            studio: WARNER BROS,
+                            online: false,
                             datum: "123",
-                            isbn: "123",
                             homepage: "?!$",
-                            schlagwoerter: ["JAVASCRIPT"]
+                            schlagwoerter: ["SPANNEND"]
                         }
                     )
                 }
@@ -267,20 +255,9 @@ describe('GraphQL Mutations', () => {
             ),
         );
         expect(message).toEqual(
-            expect.stringContaining('Der Preis darf nicht negativ sein.'),
-        );
-        expect(message).toEqual(
-            expect.stringContaining(
-                'Der Rabatt muss ein Wert zwischen 0 und 1 sein.',
-            ),
-        );
-        expect(message).toEqual(
             expect.stringContaining(
                 'Das Datum muss im Format yyyy-MM-dd sein.',
             ),
-        );
-        expect(message).toEqual(
-            expect.stringContaining('Die ISBN-Nummer ist nicht korrekt.'),
         );
         expect(message).toEqual(
             expect.stringContaining('Die Homepage ist nicht korrekt.'),
@@ -292,7 +269,7 @@ describe('GraphQL Mutations', () => {
     });
 
     // -------------------------------------------------------------------------
-    test('Nicht-vorhandenes Film aktualisieren', async () => {
+    test('Nicht-vorhandener Film aktualisieren', async () => {
         // given
         const token = await loginGraphQL(client);
         const authorization = { Authorization: `Bearer ${token}` }; // eslint-disable-line @typescript-eslint/naming-convention
@@ -306,15 +283,12 @@ describe('GraphQL Mutations', () => {
                         film: {
                             titel: "Nichtvorhanden",
                             rating: 5,
-                            art: DRUCKAUSGABE,
-                            verlag: FOO_VERLAG,
-                            preis: 99.99,
-                            rabatt: 0.099,
-                            lieferbar: false,
+                            genre: COMEDY,
+                            studio: UNIVERSAL STUDIOS,
+                            online: false,
                             datum: "2021-01-02",
-                            isbn: "9780201633610",
                             homepage: "https://acme.com",
-                            schlagwoerter: ["JAVASCRIPT"]
+                            schlagwoerter: ["LIEBE"]
                         }
                     )
                 }
@@ -343,7 +317,7 @@ describe('GraphQL Mutations', () => {
         const { message, path, extensions } = error!;
 
         expect(message).toBe(
-            `Es gibt kein Film mit der ID ${id.toLowerCase()}`,
+            `Es gibt keinen Film mit der ID ${id.toLowerCase()}`,
         );
         expect(path).toBeDefined();
         expect(path!![0]).toBe('update');
