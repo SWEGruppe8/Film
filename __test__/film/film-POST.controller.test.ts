@@ -33,43 +33,35 @@ import { loginRest } from '../login';
 // -----------------------------------------------------------------------------
 // T e s t d a t e n
 // -----------------------------------------------------------------------------
-const neuesFilm: Film = {
+const neuerFilm: Film = {
     titel: 'Neu',
     rating: 1,
-    art: 'DRUCKAUSGABE',
-    verlag: 'FOO_VERLAG',
-    preis: 99.99,
-    rabatt: 0.099,
-    lieferbar: true,
-    datum: '2022-02-28',
-    isbn: '9780007006441',
-    homepage: 'https://test.de/',
-    schlagwoerter: ['JAVASCRIPT', 'TYPESCRIPT'],
+    genre: 'ACTION',
+    studio: 'WARNER BROS',
+    online: false,
+    datum: '1999-11-04',
+    homepage: 'https://matrix.de',
+    schlagwoerter: ['SPANNEND', 'GRUSELIG'],
 };
-const neuesFilmInvalid: Record<string, unknown> = {
+const neuerFilmInvalid: Record<string, unknown> = {
     titel: '!?$',
     rating: -1,
-    art: 'UNSICHTBAR',
-    verlag: 'NO_VERLAG',
-    preis: 0,
-    rabatt: 2,
-    lieferbar: true,
+    genre: 'ACTION',
+    studio: 'WARNER BROS',
+    online: true,
     datum: '12345123123',
-    isbn: 'falsche-ISBN',
+    homepage: 'https://matrix.de',
     schlagwoerter: [],
 };
-const neuesFilmTitelExistiert: Film = {
-    titel: 'Alpha',
-    rating: 1,
-    art: 'DRUCKAUSGABE',
-    verlag: 'FOO_VERLAG',
-    preis: 99.99,
-    rabatt: 0.099,
-    lieferbar: true,
-    datum: '2022-02-28',
-    isbn: '9780007097326',
-    homepage: 'https://test.de/',
-    schlagwoerter: ['JAVASCRIPT', 'TYPESCRIPT'],
+const neuerFilmTitelExistiert: Film = {
+    titel: 'Matrix',
+    rating: 4,
+    genre: 'ACTION',
+    studio: 'WARNER BROS',
+    online: false,
+    datum: '1999-11-04',
+    homepage: 'https://matrix.de',
+    schlagwoerter: ['SPANNEND', 'GRUSELIG'],
 };
 
 // -----------------------------------------------------------------------------
@@ -109,7 +101,7 @@ describe('POST /api', () => {
         // when
         const response: AxiosResponse<string> = await client.post(
             apiPath,
-            neuesFilm,
+            neuerFilm,
             { headers },
         );
 
@@ -132,7 +124,7 @@ describe('POST /api', () => {
         expect(data).toBe('');
     });
 
-    test('Neues Film mit ungueltigen Daten', async () => {
+    test('Neuer Film mit ungueltigen Daten', async () => {
         // given
         const token = await loginRest(client);
         headers.Authorization = `Bearer ${token}`;
@@ -140,7 +132,7 @@ describe('POST /api', () => {
         // when
         const response: AxiosResponse<string> = await client.post(
             apiPath,
-            neuesFilmInvalid,
+            neuerFilmInvalid,
             { headers },
         );
 
@@ -150,18 +142,16 @@ describe('POST /api', () => {
         expect(status).toBe(HttpStatus.UNPROCESSABLE_ENTITY);
         expect(data).toEqual(
             expect.arrayContaining([
-                'Ein Filmtitel muss mit einem Filmstaben, einer Ziffer oder _ beginnen.',
+                'Ein Filmtitel muss mit einem Buchstaben, einer Ziffer oder _ beginnen.',
                 `Eine Bewertung muss zwischen 0 und ${MAX_RATING} liegen.`,
-                'Die Art eines Filmes muss KINDLE oder DRUCKAUSGABE sein.',
-                'Der Verlag eines Filmes muss FOO_VERLAG oder BAR_VERLAG sein.',
-                'Der Rabatt muss ein Wert zwischen 0 und 1 sein.',
+                'Das Genre eines Filmes muss CCOMEDY, ACTION oder ROMANCE sein.',
+                'Das Studio eines Filmes muss DISNEY, WARNER BROS oder UNIVERSAL STUDIOS.',
                 'Das Datum muss im Format yyyy-MM-dd sein.',
-                'Die ISBN-Nummer ist nicht korrekt.',
             ]),
         );
     });
 
-    test('Neues Film, aber der Titel existiert bereits', async () => {
+    test('Neuer Film, aber der Titel existiert bereits', async () => {
         // given
         const token = await loginRest(client);
         headers.Authorization = `Bearer ${token}`;
@@ -169,7 +159,7 @@ describe('POST /api', () => {
         // when
         const response: AxiosResponse<string> = await client.post(
             apiPath,
-            neuesFilmTitelExistiert,
+            neuerFilmTitelExistiert,
             { headers },
         );
 
@@ -180,11 +170,11 @@ describe('POST /api', () => {
         expect(data).toEqual(expect.stringContaining('Titel'));
     });
 
-    test('Neues Film, aber ohne Token', async () => {
+    test('Neuer Film, aber ohne Token', async () => {
         // when
         const response: AxiosResponse<Record<string, any>> = await client.post(
             apiPath,
-            neuesFilm,
+            neuerFilm,
         );
 
         // then
@@ -194,7 +184,7 @@ describe('POST /api', () => {
         expect(data.statusCode).toBe(HttpStatus.FORBIDDEN);
     });
 
-    test('Neues Film, aber mit falschem Token', async () => {
+    test('Neuer Film, aber mit falschem Token', async () => {
         // given
         const token = 'FALSCH';
         headers.Authorization = `Bearer ${token}`;
@@ -202,7 +192,7 @@ describe('POST /api', () => {
         // when
         const response: AxiosResponse<Record<string, any>> = await client.post(
             apiPath,
-            neuesFilm,
+            neuerFilm,
             { headers },
         );
 

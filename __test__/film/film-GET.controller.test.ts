@@ -35,7 +35,7 @@ import each from 'jest-each';
 // -----------------------------------------------------------------------------
 const titelVorhanden = ['a', 't', 'g'];
 const titelNichtVorhanden = ['xx', 'yy'];
-const schlagwoerterVorhanden = ['javascript', 'typescript'];
+const schlagwoerterVorhanden = ['LIEBE', 'SPANNUNG', 'GRUSELIG'];
 const schlagwoerterNichtVorhanden = ['csharp', 'php'];
 
 // -----------------------------------------------------------------------------
