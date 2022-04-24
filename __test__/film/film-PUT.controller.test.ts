@@ -32,59 +32,47 @@ import { loginRest } from '../login';
 // -----------------------------------------------------------------------------
 // T e s t d a t e n
 // -----------------------------------------------------------------------------
-const geaendertesFilm: Omit<Film, 'isbn'> = {
-    // isbn wird nicht geaendet
+const geaendertesFilm: Omit<Film, 'studio'> = {
+    // studio wird nicht geaendet
     titel: 'Geaendert',
     rating: 1,
-    art: 'DRUCKAUSGABE',
-    verlag: 'BAR_VERLAG',
-    preis: 44.4,
-    rabatt: 0.044,
-    lieferbar: true,
+    genre: 'ACTION',
+    online: false,
     datum: '2022-02-03',
     homepage: 'https://test.te',
-    schlagwoerter: ['JAVASCRIPT', 'TYPESCRIPT'],
+    schlagwoerter: ['SPANNEND', 'GRUSELIG'],
 };
 const idVorhanden = '000000000000000000000040';
 
-const geaendertesFilmIdNichtVorhanden: Omit<Film, 'homepage' | 'isbn'> = {
+const geaendertesFilmIdNichtVorhanden: Omit<Film, 'homepage' | 'studio'> = {
     titel: 'Nichtvorhanden',
     rating: 1,
-    art: 'DRUCKAUSGABE',
-    verlag: 'BAR_VERLAG',
-    preis: 44.4,
-    rabatt: 0.044,
-    lieferbar: true,
+    genre: 'ACTION',
+    online: true,
     datum: '2022-02-04',
-    schlagwoerter: ['JAVASCRIPT', 'TYPESCRIPT'],
+    schlagwoerter: ['SPANNEND', 'GRUSELIG'],
 };
 const idNichtVorhanden = '999999999999999999999999';
 
 const geaendertesFilmInvalid: Record<string, unknown> = {
     titel: '?!$',
     rating: -1,
-    art: 'UNSICHTBAR',
-    verlag: 'NO_VERLAG',
-    preis: 0.01,
-    rabatt: 2,
-    lieferbar: true,
+    genre: 'UNSICHTBAR',
+    studio: 'NO_Studio',
+    online: true,
     datum: '12345-123-123',
-    isbn: 'falsche-ISBN',
     schlagwoerter: [],
 };
 
-// isbn wird nicht geaendet
-const veraltesFilm: Omit<Film, 'isbn'> = {
+// studio wird nicht geaendet
+const veraltesFilm: Omit<Film, 'studio'> = {
     titel: 'Veraltet',
     rating: 1,
-    art: 'DRUCKAUSGABE',
-    verlag: 'BAR_VERLAG',
-    preis: 44.4,
-    rabatt: 0.044,
-    lieferbar: true,
+    genre: 'COMEDY',
+    online: true,
     datum: '2022-02-03',
     homepage: 'https://test.te',
-    schlagwoerter: ['JAVASCRIPT', 'TYPESCRIPT'],
+    schlagwoerter: ['LIEBE'],
 };
 
 // -----------------------------------------------------------------------------
@@ -115,7 +103,7 @@ describe('PUT /api/:id', () => {
         await shutdownTestserver();
     });
 
-    test('Vorhandenes Film aendern', async () => {
+    test('Vorhandenen Film aendern', async () => {
         // given
         const url = `${apiPath}/${idVorhanden}`;
         const token = await loginRest(client);
@@ -136,7 +124,7 @@ describe('PUT /api/:id', () => {
         expect(data).toBe('');
     });
 
-    test('Nicht-vorhandenes Film aendern', async () => {
+    test('Nicht-vorhandenen Film aendern', async () => {
         // given
         const url = `${apiPath}/${idNichtVorhanden}`;
         const token = await loginRest(client);
@@ -155,7 +143,7 @@ describe('PUT /api/:id', () => {
 
         expect(status).toBe(HttpStatus.PRECONDITION_FAILED);
         expect(data).toBe(
-            `Es gibt kein Film mit der ID "${idNichtVorhanden}".`,
+            `Es gibt keinen Film mit der ID "${idNichtVorhanden}".`,
         );
     });
 
@@ -179,18 +167,16 @@ describe('PUT /api/:id', () => {
         expect(status).toBe(HttpStatus.UNPROCESSABLE_ENTITY);
         expect(data).toEqual(
             expect.arrayContaining([
-                'Ein Filmtitel muss mit einem Filmstaben, einer Ziffer oder _ beginnen.',
+                'Ein Filmtitel muss mit einem Buchstaben, einer Ziffer oder _ beginnen.',
                 `Eine Bewertung muss zwischen 0 und ${MAX_RATING} liegen.`,
-                'Die Art eines Filmes muss KINDLE oder DRUCKAUSGABE sein.',
-                'Der Verlag eines Filmes muss FOO_VERLAG oder BAR_VERLAG sein.',
-                'Der Rabatt muss ein Wert zwischen 0 und 1 sein.',
+                'Das Genre eines Filmes muss CCOMEDY, ACTION oder ROMANCE sein.',
+                'Das Studio eines Filmes muss DISNEY, WARNER BROS oder UNIVERSAL STUDIOS.',
                 'Das Datum muss im Format yyyy-MM-dd sein.',
-                'Die ISBN-Nummer ist nicht korrekt.',
             ]),
         );
     });
 
-    test('Vorhandenes Film aendern, aber ohne Versionsnummer', async () => {
+    test('Vorhandenen Film aendern, aber ohne Versionsnummer', async () => {
         // given
         const url = `${apiPath}/${idVorhanden}`;
         const token = await loginRest(client);
@@ -211,7 +197,7 @@ describe('PUT /api/:id', () => {
         expect(data).toBe('Header "If-Match" fehlt');
     });
 
-    test('Vorhandenes Film aendern, aber mit alter Versionsnummer', async () => {
+    test('Vorhandenen Film aendern, aber mit alter Versionsnummer', async () => {
         // given
         const url = `${apiPath}/${idVorhanden}`;
         const token = await loginRest(client);
@@ -232,7 +218,7 @@ describe('PUT /api/:id', () => {
         expect(data).toEqual(expect.stringContaining('Die Versionsnummer'));
     });
 
-    test('Vorhandenes Film aendern, aber ohne Token', async () => {
+    test('Vorhandenen Film aendern, aber ohne Token', async () => {
         // given
         const url = `${apiPath}/${idVorhanden}`;
         delete headers.Authorization;
@@ -252,7 +238,7 @@ describe('PUT /api/:id', () => {
         expect(data.statusCode).toBe(HttpStatus.FORBIDDEN);
     });
 
-    test('Vorhandenes Film aendern, aber mit falschem Token', async () => {
+    test('Vorhandenen Film aendern, aber mit falschem Token', async () => {
         // given
         const url = `${apiPath}/${idVorhanden}`;
         const token = 'FALSCH';
