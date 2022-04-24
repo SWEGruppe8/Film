@@ -15,7 +15,7 @@
 
 // Preview durch <Strg><Shift>v
 
-= Entwickler/innen/handbuch
+= Entwickler/innen/handfilm
  Hannah Haeusler <haha1017@h-ka.de>, Hai-Mi Nguyen <ngha1011@h-ka.de>, Dinh Thien Phan <phdi1011@h-ka.de>, Achim Seelhorst <seac1011@h-ka.de> 
 :doctype: book
 :toc: left
@@ -92,7 +92,7 @@ include::FilmService.puml[]
 bla bla
 
 .Entity und Document
-[plantuml,Buch,svg]
+[plantuml,Film,svg]
 ----
 include::Film.puml[]
 ----

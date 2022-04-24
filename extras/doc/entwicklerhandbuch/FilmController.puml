@@ -115,8 +115,8 @@ package film #DDDDDD {
   class FilmController << control >> << @Controller() >> << @UseGuards() >> << @UseInterceptors() >> {
     + @Get async findById(@Param() id: string, @Req() req: Request, @Headers() version: string, @Res() res: Response): Promise<void>
     + @Get async find(@Query() query: FilmQuery, @Req() req: Request,  @Res() res: Response): Promise<void>
-    + @Post @Roles() async create(@Body() buch: Film, @Req() req: Request,  @Res() res: Response): Promise<void>
-    + @Put @Roles() async update(@Body() buch: Film, @Param() id: string, @Headers() version: string, @Res() res: Response): Promise<void>
+    + @Post @Roles() async create(@Body() film: Film, @Req() req: Request,  @Res() res: Response): Promise<void>
+    + @Put @Roles() async update(@Body() film: Film, @Param() id: string, @Headers() version: string, @Res() res: Response): Promise<void>
     + @Delete @Roles() async delete(@Param() id: string, @Res() res: Response): Promise<void>
   }
 }

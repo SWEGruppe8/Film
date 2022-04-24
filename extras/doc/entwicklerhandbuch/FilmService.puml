@@ -13,42 +13,42 @@ package mongoose {
 }
 
 
-package buch {
+package film {
   package entity {
-    class Buch
-    class BuchDocument
+    class Film
+    class FilmDocument
 
   }
 
   package service #DDDDDD {
-    class BuchInvalid
+    class FilmInvalid
     class TitelExists
     class IsbnExists
     class VersionInvalid
     class VersionOutdated
 
-    BuchService .up.> Promise
-    BuchService ..> Buch
-    BuchService ..> BuchDocument
-    BuchService .left.> BuchValidationService
-    BuchService ..> BuchInvalid
-    BuchService ..> TitelExists
-    BuchService ..> IsbnExists
-    BuchService ..> VersionInvalid
-    BuchService ..> VersionOutdated
-    BuchService .right.> MailService
-    BuchService .up.> FilterQuery
-    BuchService .up.> Injectable
+    FilmService .up.> Promise
+    FilmService ..> Film
+    FilmService ..> FilmDocument
+    FilmService .left.> FilmValidationService
+    FilmService ..> FilmInvalid
+    FilmService ..> TitelExists
+    FilmService ..> IsbnExists
+    FilmService ..> VersionInvalid
+    FilmService ..> VersionOutdated
+    FilmService .right.> MailService
+    FilmService .up.> FilterQuery
+    FilmService .up.> Injectable
 
-    class BuchService << control >> <<@Injectable()>> {
-      + async findById(id: string): Promise<BuchDocument | undefined>
-      + async find(query?: FilterQuery<BuchDocument>): Promise<BuchDocument[]>
-      + async create(buch: Buch): Promise<string|BuchInvalid|TitelExists|IsbnExists>
-      + async update(buch: Buch, id: string, version: string): Promise<number|BuchInvalid|TitelExists|IsbnExists|VersionInvalid|VersionOutdated>
+    class FilmService << control >> <<@Injectable()>> {
+      + async findById(id: string): Promise<FilmDocument | undefined>
+      + async find(query?: FilterQuery<FilmDocument>): Promise<FilmDocument[]>
+      + async create(film: Film): Promise<string|FilmInvalid|TitelExists|IsbnExists>
+      + async update(film: Film, id: string, version: string): Promise<number|FilmInvalid|TitelExists|IsbnExists|VersionInvalid|VersionOutdated>
       + async delete(id: string): Promise<boolean>
     }
 
-    VersionOutdated -[hidden]-> BuchDocument
+    VersionOutdated -[hidden]-> FilmDocument
   }
 }
 
