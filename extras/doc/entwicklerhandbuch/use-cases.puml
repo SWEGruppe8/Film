@@ -1,0 +1,23 @@
+@startuml Use Cases
+
+actor Gast
+actor Admin
+actor Kunde
+
+rectangle kunde {
+    Gast --> (Buch suchen)
+    Admin --> (Buch suchen)
+    Admin --> (Buch anlegen)
+    Admin --> (Buch ändern)
+    Admin --> (Buch löschen)
+    Admin --> (Datei hochladen)
+    Admin --> (Datei herunterladen)
+    Kunde --> (Buch suchen)
+    Kunde --> (Buch anlegen)
+    Kunde --> (Buch ändern)
+    Kunde --> (Datei herunterladen)
+}
+
+footer (c) Jürgen Zimmermann
+
+@enduml

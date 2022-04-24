@@ -1,0 +1,56 @@
+@startuml Entity
+
+package @nestjs/mongoose {
+  class "function Schema() : PropertyDecorator" as Schema
+  class "function Prop() : PropertyDecorator" as Prop
+}
+
+package mongoose {
+  class Document
+}
+
+package film.entity {
+  class "type FilmDocument = Fil & Document<>" as FilmDocument
+  hide BuchDocument circle
+
+  BuchDocument ..> Buch
+  BuchDocument .right.> Document
+
+  class Buch
+
+  Buch .right.> Schema
+  Buch .right.> Prop
+
+  Buch ..> BuchArt
+  Buch ..> Verlag
+
+  enum BuchArt {
+    KINDLE
+    DRUCKAUSGABE
+  }
+
+  enum Verlag {
+    FOO_VERLAG
+    BAR_VERLAG
+  }
+
+  class Buch <<entity>> <<@Schema>> {
+    + @Prop titel: string
+    + @Prop rating?: number
+    + @Prop art?: BuchArt
+    + @Prop verlag: Verlag
+    + @Prop preis: number
+    + @Prop rabatt?: number
+    + @Prop lieferbar?: boolean
+    + @Prop datum?: Date
+    + @Prop isbn: string
+    + @Prop homepage?: string
+    + @Prop schlagwoerter?: string[]
+  }
+}
+
+hide empty members
+
+footer (c) Jürgen Zimmermann
+
+@enduml
