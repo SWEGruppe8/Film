@@ -75,8 +75,8 @@ describe('GraphQL Queries', () => {
                 {
                     film(id: "${id}") {
                         titel
-                        art
-                        isbn
+                        genre
+                        studio
                         version
                     }
                 }
@@ -154,7 +154,7 @@ describe('GraphQL Queries', () => {
                     {
                         filme(titel: "${titel}") {
                             titel
-                            art
+                            genre
                         }
                     }
                 `,
@@ -198,7 +198,7 @@ describe('GraphQL Queries', () => {
                     {
                         filme(titel: "${teilTitel}") {
                             titel
-                            art
+                            genre
                         }
                     }
                 `,
@@ -241,7 +241,7 @@ describe('GraphQL Queries', () => {
                     {
                         filme(titel: "${teilTitel}") {
                             titel
-                            art
+                            genre
                         }
                     }
                 `,
