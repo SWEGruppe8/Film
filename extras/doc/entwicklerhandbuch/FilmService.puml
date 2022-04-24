@@ -12,9 +12,6 @@ package mongoose {
   hide FilterQuery circle
 }
 
-package mail {
-  class MailService
-}
 
 package buch {
   package entity {
