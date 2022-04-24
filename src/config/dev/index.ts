@@ -18,7 +18,7 @@
 
 /**
  * Das Modul enthält die Testdaten für
- * - DB neu laden mit Buchdaten
+ * - DB neu laden mit Filmdaten
  * - DB neu laden mit Binärdateien
  * - Benutzerdaten
  * @packageDocumentation
