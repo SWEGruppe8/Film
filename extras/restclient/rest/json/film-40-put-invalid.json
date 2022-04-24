@@ -1,0 +1,10 @@
+{
+  "titel": "Pocahontas",
+  "rating": 6,
+  "genre": "ACTION",
+  "studio": "DISNEY",
+  "online": true,
+  "datum": "12345-123-123",
+  "homepage": "anyHomepage",
+  "schlagwoerter": ["SPANNEND", "LIEBE"]
+}
