@@ -15,6 +15,7 @@ import { Express, Response } from 'express';
 import { type FileFindError, FilmFileService } from '../service/index.js';
 import { JwtAuthGuard, Roles, RolesGuard } from '../../security/index.js';
 import { ResponseTimeInterceptor, getLogger } from '../../logger/index.js';
+import { FileInterceptor } from '@nestjs/platform-express';
 import fileTypePkg from 'file-type';
 
 @Controller('file')
