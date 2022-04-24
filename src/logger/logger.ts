@@ -5,11 +5,11 @@
  * @packageDocumentation
  */
 
- import { type SonicBoom } from 'sonic-boom';
- import { parentLogger } from '../config/index.js';
- import type pino from 'pino';
+import { type SonicBoom } from 'sonic-boom';
+import { parentLogger } from '../config/index.js';
+import type pino from 'pino';
 
- /**
+/**
  * Eine-Klasse, um ein Logger-Objekt von `Pino` zu erzeugen, so dass ein
  * _Kontext_ definiert wird, der bei jeder Log-Methode verwendet wird und i.a.
  * der Name einer eigenen Klasse ist.
