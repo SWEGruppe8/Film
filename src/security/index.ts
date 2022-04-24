@@ -21,7 +21,7 @@
  * @packageDocumentation
  */
 
- export {
+export {
     ROLES_KEY,
     AuthService,
     JwtAuthGuard,

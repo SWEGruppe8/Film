@@ -5,7 +5,6 @@ import { type Request } from 'express';
 import { type User } from '../service/index.js';
 import { getLogger } from '../../../logger/index.js';
 
-
 @Injectable()
 export class JwtAuthGraphQlGuard extends AuthGuard('jwt') {
     readonly #logger = getLogger(JwtAuthGraphQlGuard.name);

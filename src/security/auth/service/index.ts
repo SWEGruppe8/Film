@@ -21,8 +21,7 @@
  * @packageDocumentation
  */
 
- export { AuthService, type LoginResult } from './auth.service.js';
- export { NoTokenError, UserInvalidError } from './errors.js';
- export { type Role } from './role.js';
- export { type User, UserService } from './user.service.js';
- 
+export { AuthService, type LoginResult } from './auth.service.js';
+export { NoTokenError, UserInvalidError } from './errors.js';
+export { type Role } from './role.js';
+export { type User, UserService } from './user.service.js';

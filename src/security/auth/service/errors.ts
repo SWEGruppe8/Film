@@ -32,7 +32,7 @@
  * Die Klasse `NoTokenError` implementiert den Fehler, wenn es beim Request
  * keinen JSON Web Token gab.
  */
- export class NoTokenError extends Error {
+export class NoTokenError extends Error {
     constructor() {
         super('Es gibt keinen Token');
         this.name = 'NoTokenError';

@@ -21,4 +21,4 @@
  * @packageDocumentation
  */
 
- export type Role = 'admin' | 'kunde' | 'mitarbeiter';
+export type Role = 'admin' | 'kunde' | 'mitarbeiter';
