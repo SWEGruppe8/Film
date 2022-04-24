@@ -10,7 +10,7 @@ export const jsonSchema: GenericJsonSchema = {
     type: 'object',
     properties: {
         _id: { type: 'object' },
-        __v: {
+        _v: {
             type: 'number',
             minimum: 0,
         },
@@ -29,7 +29,7 @@ export const jsonSchema: GenericJsonSchema = {
         },
         genre: {
             type: 'string',
-            enum: ['COMEDY', 'ACTION','ROMANCE', ''],
+            enum: ['COMEDY', 'ACTION', 'ROMANCE', ''],
         },
         studio: {
             type: 'string',

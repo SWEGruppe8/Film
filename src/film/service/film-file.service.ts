@@ -23,9 +23,9 @@
  */
 
 import {
-    type FilmNotExists,
     type FileFindError,
     type FileNotFound,
+    type FilmNotExists,
     type MultipleFiles,
 } from './errors.js';
 import {
@@ -33,9 +33,9 @@ import {
     type GridFSBucketReadStream,
     type GridFSFile,
 } from 'mongodb';
-import { FilmReadService } from './film-read.service.js';
 import { DbService } from '../../db/db.service.js';
 import { type FileTypeResult } from 'file-type';
+import { FilmReadService } from './film-read.service.js';
 import { Injectable } from '@nestjs/common';
 import { dbConfig } from '../../config/index.js';
 import { getLogger } from '../../logger/index.js';
@@ -172,7 +172,7 @@ export class FilmFileService {
             return result;
         }
 
-        this.#logger.debug('#checkFilename: film vorhanden=%o', film );
+        this.#logger.debug('#checkFilename: film vorhanden=%o', film);
         return undefined;
     }
 

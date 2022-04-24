@@ -44,7 +44,7 @@ export interface TitelExists {
  * - {@linkcode ConstraintViolations}
  * - {@linkcode TitelExists}
  */
-export type CreateError = ConstraintViolations  | TitelExists;
+export type CreateError = ConstraintViolations | TitelExists;
 
 /**
  * Klasse für eine ungültige Versionsnummer beim Ändern.
@@ -80,8 +80,8 @@ export interface FilmNotExists {
  * - {@linkcode VersionOutdated}
  */
 export type UpdateError =
-    | FilmNotExists
     | ConstraintViolations
+    | FilmNotExists
     | TitelExists
     | VersionInvalid
     | VersionOutdated;
@@ -117,7 +117,7 @@ export interface InvalidContentType {
  * - {@linkcode MultipleFiles}
  */
 export type FileFindError =
-    | FilmNotExists
     | FileNotFound
+    | FilmNotExists
     | InvalidContentType
     | MultipleFiles;

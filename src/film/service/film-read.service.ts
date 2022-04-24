@@ -4,7 +4,7 @@
  * @packageDocumentation
  */
 
- import {
+import {
     type FilmDocument,
     exactFilterProperties,
     modelName,
@@ -34,20 +34,20 @@ export class FilmReadService {
      *          in einem Promise aus ES2015 (vgl.: Mono aus Project Reactor oder
      *          Future aus Java)
      */
-         async findById(idStr: string) {
-            this.#logger.debug('findById: idStr=%s', idStr);
-    
-            if (!ObjectID.isValid(idStr)) {
-                this.#logger.debug('findById: Ungueltige ObjectID');
-                return undefined;
-            }
-    
-            const id = new ObjectID(idStr);
-            const film = await this.#filmModel.findById(id); //NOSONAR
-            this.#logger.debug('findById: film=%o', film);
-    
-            return film || undefined;
+    async findById(idStr: string) {
+        this.#logger.debug('findById: idStr=%s', idStr);
+
+        if (!ObjectID.isValid(idStr)) {
+            this.#logger.debug('findById: Ungueltige ObjectID');
+            return undefined;
         }
+
+        const id = new ObjectID(idStr);
+        const film = await this.#filmModel.findById(id); //NOSONAR
+        this.#logger.debug('findById: film=%o', film);
+
+        return film || undefined;
+    }
 
     /**
      * Filme asynchron suchen.
@@ -95,7 +95,8 @@ export class FilmReadService {
             dbFilter.schlagwoerter = schlagwoerter;
         }
 
-        const filme = await this.#filmModel.find( //NOSONAR
+        const filme = await this.#filmModel.find(
+            //NOSONAR
             dbFilter as mongoose.FilterQuery<FilmDocument>,
         );
         this.#logger.debug('find: filme=%o', filme);
