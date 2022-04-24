@@ -35,12 +35,12 @@ import { dbConfig } from '../../config';
 /**
  * Alias-Typ für gültige Strings bei Herausgebern.
  */
-export type Studio = 'DISNEY' | 'WARNER BROS' | 'UNIVERSAL STUDIOS' ;
+export type Studio = 'DISNEY' | 'UNIVERSAL STUDIOS' | 'WARNER BROS';
 
 /**
  * Alias-Typ für gültige Strings bei der Art eines Filmes.
  */
-export type Genre = 'COMEDY' | 'ACTION' | 'ROMANCE';
+export type Genre = 'ACTION' | 'COMEDY' | 'ROMANCE';
 
 SchemaType.set('debug', true);
 
@@ -93,11 +93,15 @@ export class Film {
     @ApiProperty({ example: 5, type: Number })
     readonly rating: number | null | undefined;
 
-    @Prop({ type: String, enum: ['COMEDY', 'ACTION','ROMANCE'] })
+    @Prop({ type: String, enum: ['COMEDY', 'ACTION', 'ROMANCE'] })
     @ApiProperty({ example: 'COMEDY', type: String })
     readonly genre: Genre | '' | null | undefined;
 
-    @Prop({ type: String, required: true, enum: ['DISNEY', 'WARNER BROS', 'UNIVERSIAL STUDIOS'] })
+    @Prop({
+        type: String,
+        required: true,
+        enum: ['DISNEY', 'WARNER BROS', 'UNIVERSIAL STUDIOS'],
+    })
     @ApiProperty({ example: 'DISNEY', type: String })
     readonly studio: Studio | '' | null | undefined;
 
@@ -169,8 +173,8 @@ filmSchema.index({ studio: 1 }, { name: 'studio' });
 filmSchema.index({ schlagwoerter: 1 }, { sparse: true, name: 'schlagwoerter' });
 
 // Document: _id (vom Type ObjectID) und __v als Attribute
-export type FilmDocument = Film &
-    Document<ObjectID, any, Film> & { _id: ObjectID }; // eslint-disable-line @typescript-eslint/naming-convention
+export type FilmDocument = Document<ObjectID, any, Film> &
+    Film & { _id: ObjectID }; // eslint-disable-line @typescript-eslint/naming-convention
 
 filmSchema.plugin(optimistic);
 

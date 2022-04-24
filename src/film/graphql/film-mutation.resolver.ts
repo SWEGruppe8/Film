@@ -1,3 +1,4 @@
+/*eslint linebreak-style: ["error", "unix"]*/
 /*
  * Copyright (C) 2021 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
@@ -16,8 +17,8 @@
  */
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
 import {
-    FilmWriteService,
     type CreateError,
+    FilmWriteService,
     type UpdateError,
 } from '../service/index.js';
 import {
