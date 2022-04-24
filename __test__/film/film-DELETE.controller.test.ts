@@ -56,7 +56,7 @@ describe('DELETE /api/filme', () => {
         await shutdownTestserver();
     });
 
-    test('Vorhandenes Film loeschen', async () => {
+    test('Vorhandenen Film loeschen', async () => {
         // given
         const url = `${apiPath}/${id}`;
         const token = await loginRest(client);
