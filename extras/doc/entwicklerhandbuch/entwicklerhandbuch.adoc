@@ -92,7 +92,7 @@ include::FilmService.puml[]
 bla bla
 
 .Entity und Document
-[plantuml,Buch,svg]
+[plantuml,Film,svg]
 ----
 include::Film.puml[]
 ----
