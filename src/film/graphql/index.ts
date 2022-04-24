@@ -1,3 +1,4 @@
+/*eslint linebreak-style: ["error", "unix"]*/
 /*
  * Copyright (C) 2022 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
