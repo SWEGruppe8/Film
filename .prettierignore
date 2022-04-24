@@ -2,3 +2,5 @@
 
 package.json
 ReadMe.md
+src/film/entity/film.ts
+src/film/entity/index.ts

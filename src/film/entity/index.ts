@@ -1,3 +1,4 @@
+/*eslint linebreak-style: ["error", "windows"]*/
 /**
  * Das Modul besteht aus Interfaces, Klassen und Funktionen für Bücher als
  * _Entity_ gemäß _Domain Driven Design_. Dazu gehört auch die Validierung.
@@ -13,4 +14,4 @@ export {
     collectionName,
     exactFilterProperties,
     modelName,
-} from './film';
+} from "./film";
