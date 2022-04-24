@@ -60,7 +60,7 @@ import { getBaseUri } from './getBaseUri.js';
 import { paths } from '../../config/index.js';
 
 /**
- * Die Controller-Klasse für die Verwaltung von Bücher.
+ * Die Controller-Klasse für die Verwaltung von Filmen.
  */
 @Controller(paths.api)
 @UseGuards(JwtAuthGuard, RolesGuard)
