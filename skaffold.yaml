@@ -22,7 +22,7 @@
 apiVersion: skaffold/v2beta26
 kind: Config
 metadata:
-  name: buch
+  name: film
 # https://skaffold.dev/docs/pipeline-stages/builders
 build:
   # https://skaffold.dev/docs/pipeline-stages/taggers
@@ -30,7 +30,7 @@ build:
     envTemplate:
       template: "{{.TAG}}"
   artifacts:
-    - image: docker.io/juergenzimmermann/buch
+    - image: docker.io/juergenzimmermann/film
       # https://skaffold.dev/docs/pipeline-stages/builders/buildpacks
       buildpacks:
         #builder: paketobuildpacks/builder:base
@@ -54,5 +54,5 @@ profiles:
     # https://skaffold.dev/docs/pipeline-stages/port-forwarding
     portForward:
       - resourceType: service
-        resourceName: buch
+        resourceName: film
         port: 3000
