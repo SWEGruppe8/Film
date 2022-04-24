@@ -1,5 +1,3 @@
-/* eslint-disable max-lines */
-
 /**
  * Das Modul besteht aus der Controller-Klasse für Lesen an der REST-Schnittstelle.
  * @packageDocumentation
@@ -19,8 +17,8 @@ import {
 } from '@nestjs/swagger';
 import {
     Film,
-    type Genre,
     type FilmDocument,
+    type Genre,
     type Studio,
 } from '../entity/index.js';
 import {
