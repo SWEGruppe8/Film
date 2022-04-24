@@ -22,7 +22,7 @@
  */
 
 /**
- * Klasse für fehlerhafte Buchdaten. Die Meldungstexte sind in der Property
+ * Klasse für fehlerhafte Filmdaten. Die Meldungstexte sind in der Property
  * `msg` gekapselt.
  */
 export interface ConstraintViolations {
@@ -40,7 +40,7 @@ export interface TitelExists {
 }
 
 /**
- * Union-Type für Fehler beim Neuanlegen eines Buches:
+ * Union-Type für Fehler beim Neuanlegen eines Filmes:
  * - {@linkcode ConstraintViolations}
  * - {@linkcode TitelExists}
  */
@@ -72,7 +72,7 @@ export interface FilmNotExists {
 }
 
 /**
- * Union-Type für Fehler beim Ändern eines Buches:
+ * Union-Type für Fehler beim Ändern eines Filmes:
  * - {@linkcode FilmNotExists}
  * - {@linkcode ConstraintViolations}
  * - {@linkcode TitelExists}
@@ -95,7 +95,7 @@ export interface FileNotFound {
 }
 
 /**
- * Klasse, falls es mehrere Binärdateien zu einem Buch gibt.
+ * Klasse, falls es mehrere Binärdateien zu einem Film gibt.
  */
 export interface MultipleFiles {
     readonly type: 'MultipleFiles';
@@ -110,7 +110,7 @@ export interface InvalidContentType {
 }
 
 /**
- * Union-Type für Fehler beim Lesen einer Binärdatei zu einem Buch:
+ * Union-Type für Fehler beim Lesen einer Binärdatei zu einem Film:
  * - {@linkcode FilmNotExists}
  * - {@linkcode FileNotFound}
  * - {@linkcode InvalidContentType}

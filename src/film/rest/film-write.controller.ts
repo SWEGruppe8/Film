@@ -87,7 +87,7 @@ export class FilmWriteController {
      * gesetzt und genauso auch wenn der Titel bereits
      * existieren.
      *
-     * @param buch JSON-Daten für ein Film im Request-Body.
+     * @param film JSON-Daten für ein Film im Request-Body.
      * @param res Leeres Response-Objekt von Express.
      * @returns Leeres Promise-Objekt.
      */
@@ -134,7 +134,7 @@ export class FilmWriteController {
      * Statuscode `400` (`Bad Request`) gesetzt und genauso auch wenn der neue
      * Titel bereits existieren.
      *
-     * @param buch Buchdaten im Body des Request-Objekts.
+     * @param film Filmdaten im Body des Request-Objekts.
      * @param id Pfad-Paramater für die ID.
      * @param version Versionsnummer aus dem Header _If-Match_.
      * @param res Leeres Response-Objekt von Express.

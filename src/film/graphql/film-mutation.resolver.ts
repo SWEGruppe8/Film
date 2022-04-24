@@ -96,7 +96,7 @@ export class FilmMutationResolver {
         if (typeof result === 'object') {
             throw new UserInputError(this.#errorMsgUpdateFilm(result));
         }
-        this.#logger.debug('updateBuch: result=%d', result);
+        this.#logger.debug('updateFilm: result=%d', result);
         return result;
     }
 

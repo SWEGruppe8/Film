@@ -39,8 +39,8 @@ type Mutation {
   delete(id: ID!): Boolean
 }
 
-# Datenschema eines Buches, das empfangen wird
-type Buch {
+# Datenschema eines Filmes, das empfangen wird
+type Film {
   id: ID
   version: Int
   titel: String
@@ -52,14 +52,14 @@ type Buch {
   schlagwoerter: [String]
 }
 
-# Enum-Typ fuer die Art eines Buches
+# Enum-Typ fuer die Art eines Filmes
 enum Genre {
   COMEDY,
   ACTION,
   ROMANCE
 }
 
-# Enum-Typ fuer den Verlag eines Buches
+# Enum-Typ fuer den Verlag eines Filmes
 enum Studio {
   DISNEY, 
   WARNER BROS, 

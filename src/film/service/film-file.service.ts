@@ -16,7 +16,7 @@
  */
 
 /**
- * Das Modul besteht aus der Klasse {@linkcode BuchFileService}, damit
+ * Das Modul besteht aus der Klasse {@linkcode FilmFileService}, damit
  * Binärdateien mit dem Treiber von _MongoDB_ in _GridFS_ abgespeichert und
  * ausgelesen werden können.
  * @packageDocumentation
@@ -53,7 +53,7 @@ export interface FileFindSuccess {
 }
 
 /**
- * Mit der Klasse {@linkcode BuchFileService} können Binärdateien mit dem
+ * Mit der Klasse {@linkcode FilmFileService} können Binärdateien mit dem
  * Treiber von _MongoDB_ in _GridFS_ abgespeichert und ausgelesen werden.
  */
 @Injectable()
@@ -92,7 +92,7 @@ export class FilmFileService {
             return false;
         }
 
-        // Gibt es ein Buch zur angegebenen ID?
+        // Gibt es ein Film zur angegebenen ID?
         const film = await this.#service.findById(filename); //NOSONAR
         if (film === undefined) {
             return false;

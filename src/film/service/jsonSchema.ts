@@ -50,7 +50,7 @@ export const jsonSchema: GenericJsonSchema = {
     errorMessage: {
         properties: {
             version: 'Die Versionsnummer muss mindestens 0 sein.',
-            titel: 'Ein Filmtitel muss mit einem Buchstaben, einer Ziffer oder _ beginnen.',
+            titel: 'Ein Filmtitel muss mit einem Filmstaben, einer Ziffer oder _ beginnen.',
             rating: 'Eine Bewertung muss zwischen 0 und 5 liegen.',
             genre: 'Das Genre eines Films muss COMEDY, ACTION oder ROMANCE sein.',
             verlag: 'Der Verlag eines Films muss DISNEY, WARNER BROS oder UNIVERSIAL STUDIOS sein.',
