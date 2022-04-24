@@ -75,48 +75,48 @@ package security.auth {
   Roles ..> Role
 }
 
-package buch #DDDDDD {
+package film #DDDDDD {
   package entity #FFFFFF {
-    class Buch <<entity>>
+    class Film <<entity>>
   }
 
   package service #FFFFFF {
-    class BuchService << control >>
+    class FilmService << control >>
   }
 
-  BuchQuery --|> Buch
+  FilmQuery --|> Film
 
-  BuchController o-down-> "1" BuchService : service
-  BuchController ..> Buch
+  FilmController o-down-> "1" FilmService : service
+  FilmController ..> Film
 
-  BuchController .up.> Controller
-  BuchController .up.> UseGuards
-  BuchController .up.> UseInterceptors
-  BuchController .up.> Get
-  BuchController .up.> Post
-  BuchController .up.> Put
-  BuchController .up.> Delete
-  BuchController .up.> Req
-  BuchController .up.> Res
-  BuchController .up.> Param
-  BuchController .up.> Query
-  BuchController .up.> Body
-  BuchController .up.> Headers
+  FilmController .up.> Controller
+  FilmController .up.> UseGuards
+  FilmController .up.> UseInterceptors
+  FilmController .up.> Get
+  FilmController .up.> Post
+  FilmController .up.> Put
+  FilmController .up.> Delete
+  FilmController .up.> Req
+  FilmController .up.> Res
+  FilmController .up.> Param
+  FilmController .up.> Query
+  FilmController .up.> Body
+  FilmController .up.> Headers
 
-  BuchController .up.> Roles
-  BuchController .up.> Role
+  FilmController .up.> Roles
+  FilmController .up.> Role
 
-  BuchController ..> BuchQuery
+  FilmController ..> FilmQuery
 
-  BuchController ..> Request
-  BuchController ..> Response
-  BuchController ..> Promise
+  FilmController ..> Request
+  FilmController ..> Response
+  FilmController ..> Promise
 
-  class BuchController << control >> << @Controller() >> << @UseGuards() >> << @UseInterceptors() >> {
+  class FilmController << control >> << @Controller() >> << @UseGuards() >> << @UseInterceptors() >> {
     + @Get async findById(@Param() id: string, @Req() req: Request, @Headers() version: string, @Res() res: Response): Promise<void>
-    + @Get async find(@Query() query: BuchQuery, @Req() req: Request,  @Res() res: Response): Promise<void>
-    + @Post @Roles() async create(@Body() buch: Buch, @Req() req: Request,  @Res() res: Response): Promise<void>
-    + @Put @Roles() async update(@Body() buch: Buch, @Param() id: string, @Headers() version: string, @Res() res: Response): Promise<void>
+    + @Get async find(@Query() query: FilmQuery, @Req() req: Request,  @Res() res: Response): Promise<void>
+    + @Post @Roles() async create(@Body() buch: Film, @Req() req: Request,  @Res() res: Response): Promise<void>
+    + @Put @Roles() async update(@Body() buch: Film, @Param() id: string, @Headers() version: string, @Res() res: Response): Promise<void>
     + @Delete @Roles() async delete(@Param() id: string, @Res() res: Response): Promise<void>
   }
 }

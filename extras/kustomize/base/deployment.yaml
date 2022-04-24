@@ -38,7 +38,7 @@ spec:
       serviceAccountName: acme-film
       containers:
         # https://kubernetes.io/docs/concepts/containers/images
-        - image: docker.io/juergenzimmermann/buch:1.0.0
+        - image: docker.io/juergenzimmermann/film:1.0.0
           name: film
           # https://kubernetes.io/docs/tasks/inject-data-application/define-interdependent-environment-variables
           # https://opensource.com/article/19/6/introduction-kubernetes-secrets-and-configmaps
