@@ -11,46 +11,43 @@ package mongoose {
 
 package film.entity {
   class "type FilmDocument = Fil & Document<>" as FilmDocument
-  hide BuchDocument circle
+  hide FilmDocument circle
 
-  BuchDocument ..> Buch
-  BuchDocument .right.> Document
+  FilmDocument ..> Film
+  FilmDocument .right.> Document
 
-  class Buch
+  class Film
 
-  Buch .right.> Schema
-  Buch .right.> Prop
+  Film .right.> Schema
+  Film .right.> Prop
 
-  Buch ..> BuchArt
-  Buch ..> Verlag
+  Film ..> Genre
+  Film ..> Studio
 
-  enum BuchArt {
-    KINDLE
-    DRUCKAUSGABE
+  enum Genre {
+    COMEDY
+    ACTION
+    ROMANCE
   }
 
-  enum Verlag {
-    FOO_VERLAG
-    BAR_VERLAG
+  enum Studio {
+    DISNEY
+    WARNER BROS
+    UNIVERSAL STUDIOS
   }
 
-  class Buch <<entity>> <<@Schema>> {
+  class Film <<entity>> <<@Schema>> {
     + @Prop titel: string
     + @Prop rating?: number
-    + @Prop art?: BuchArt
-    + @Prop verlag: Verlag
-    + @Prop preis: number
-    + @Prop rabatt?: number
-    + @Prop lieferbar?: boolean
+    + @Prop genre?: FilmGenre
+    + @Prop studio: Studio
+    + @Prop online?: boolean
     + @Prop datum?: Date
-    + @Prop isbn: string
     + @Prop homepage?: string
     + @Prop schlagwoerter?: string[]
   }
 }
 
 hide empty members
-
-footer (c) Jürgen Zimmermann
 
 @enduml
