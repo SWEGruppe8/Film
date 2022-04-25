@@ -34,7 +34,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 /**
  * Das Modul besteht aus Controller- und Service-Klassen für die Verwaltung von
- * Bücher.
+ * Filmen.
  * @packageDocumentation
  */
 

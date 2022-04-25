@@ -36,7 +36,6 @@ package film {
     FilmService ..> IsbnExists
     FilmService ..> VersionInvalid
     FilmService ..> VersionOutdated
-    FilmService .right.> MailService
     FilmService .up.> FilterQuery
     FilmService .up.> Injectable
 

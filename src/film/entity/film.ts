@@ -20,17 +20,18 @@
  * @packageDocumentation
  */
 
-import {
-    type Document,
-    type Schema as MongooseSchema,
-    type Query,
-    type SchemaOptions,
-    SchemaType,
-} from 'mongoose';
+//import {
+//  type Document,
+//    type Schema as MongooseSchema,
+//    type Query,
+//    type SchemaOptions,
+//   SchemaType,
+// } from 'mongoose';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ApiProperty } from '@nestjs/swagger';
 import { type ObjectID } from 'bson';
-import { dbConfig } from '../../config';
+import { dbConfig } from '../../config/index.js';
+import mongoose from 'mongoose';
 
 /**
  * Alias-Typ für gültige Strings bei Herausgebern.
@@ -42,7 +43,7 @@ export type Studio = 'DISNEY' | 'UNIVERSAL STUDIOS' | 'WARNER BROS';
  */
 export type Genre = 'ACTION' | 'COMEDY' | 'ROMANCE';
 
-SchemaType.set('debug', true);
+mongoose.SchemaType.set('debug', true);
 
 // Mongoose ist von Valeri Karpov, der auch den Begriff "MEAN-Stack" gepraegt hat:
 // http://thecodebarbarian.com/2013/04/29//easy-web-prototyping-with-mongodb-and-nodejs
@@ -60,7 +61,7 @@ SchemaType.set('debug', true);
 // Using decorators to create schemas greatly reduces boilerplate and improves
 // overall code readability.
 
-const MONGOOSE_OPTIONS: SchemaOptions = {
+const MONGOOSE_OPTIONS: mongoose.SchemaOptions = {
     // createdAt und updatedAt als automatisch gepflegte Felder
     timestamps: true,
 
@@ -97,11 +98,7 @@ export class Film {
     @ApiProperty({ example: 'COMEDY', type: String })
     readonly genre: Genre | '' | null | undefined;
 
-    @Prop({
-        type: String,
-        required: true,
-        enum: ['DISNEY', 'WARNER BROS', 'UNIVERSIAL STUDIOS'],
-    })
+    @Prop({ type: String, required: true, enum: ['DISNEY', 'WARNER BROS', 'UNIVERSIAL STUDIOS'] })
     @ApiProperty({ example: 'DISNEY', type: String })
     readonly studio: Studio | '' | null | undefined;
 
@@ -126,41 +123,40 @@ export class Film {
 
 // Optimistische Synchronisation durch das Feld __v fuer die Versionsnummer
 // https://mongoosejs.com/docs/guide.html#versionKey
-const optimistic = (schema: MongooseSchema<Document<Film>>) => {
-    schema.pre<Query<Document<Film>, Document<Film>>>(
-        'findOneAndUpdate',
-        function () {
-            const update = this.getUpdate(); // eslint-disable-line @typescript-eslint/no-invalid-this
-            if (update === null) {
-                return;
-            }
+const optimistic = (schema: mongoose.Schema<mongoose.Document<Film>>) => {
+    schema.pre<
+        mongoose.Query<mongoose.Document<Film>, mongoose.Document<Film>>
+    >('findOneAndUpdate', function () {
+        const update = this.getUpdate(); // eslint-disable-line @typescript-eslint/no-invalid-this
+        if (update === null) {
+            return;
+        }
 
-            const updateDoc = update as Document<Film>;
-            if (updateDoc.__v !== null) {
-                delete updateDoc.__v;
-            }
+        const updateDoc = update as mongoose.Document<Film>;
+        if (updateDoc.__v !== null) {
+            delete updateDoc.__v;
+        }
 
-            for (const key of ['$set', '$setOnInsert']) {
-                /* eslint-disable security/detect-object-injection */
-                // @ts-expect-error siehe https://mongoosejs.com/docs/guide.html#versionKey
-                const updateKey = update[key]; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
-                // Optional Chaining
-                if (updateKey?.__v !== null) {
-                    delete updateKey.__v;
-                    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-                    if (Object.entries(updateKey).length === 0) {
-                        // @ts-expect-error UpdateQuery laesst nur Lesevorgaenge zu: abgeleitet von ReadonlyPartial<...>
-                        delete update[key]; // eslint-disable-line @typescript-eslint/no-dynamic-delete
-                    }
+        for (const key of ['$set', '$setOnInsert']) {
+            /* eslint-disable security/detect-object-injection */
+            // @ts-expect-error siehe https://mongoosejs.com/docs/guide.html#versionKey
+            const updateKey = update[key]; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+            // Optional Chaining
+            if (updateKey?.__v !== null) {
+                delete updateKey.__v;
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+                if (Object.entries(updateKey).length === 0) {
+                    // @ts-expect-error UpdateQuery laesst nur Lesevorgaenge zu: abgeleitet von ReadonlyPartial<...>
+                    delete update[key]; // eslint-disable-line @typescript-eslint/no-dynamic-delete
                 }
-                /* eslint-enable security/detect-object-injection */
             }
-            // @ts-expect-error $inc ist in _UpdateQuery<TSchema> enthalten
-            update.$inc = update.$inc || {}; // eslint-disable-line @typescript-eslint/strict-boolean-expressions, @typescript-eslint/no-unsafe-assignment
-            // @ts-expect-error UpdateQuery laesst nur Lesevorgaenge zu: abgeleitet von ReadonlyPartial<...>
-            update.$inc.__v = 1;
-        },
-    );
+            /* eslint-enable security/detect-object-injection */
+        }
+        // @ts-expect-error $inc ist in _UpdateQuery<TSchema> enthalten
+        update.$inc = update.$inc || {}; // eslint-disable-line @typescript-eslint/strict-boolean-expressions, @typescript-eslint/no-unsafe-assignment
+        // @ts-expect-error UpdateQuery laesst nur Lesevorgaenge zu: abgeleitet von ReadonlyPartial<...>
+        update.$inc.__v = 1;
+    });
 };
 
 // Schema passend zur Entity-Klasse erzeugen
@@ -173,8 +169,8 @@ filmSchema.index({ studio: 1 }, { name: 'studio' });
 filmSchema.index({ schlagwoerter: 1 }, { sparse: true, name: 'schlagwoerter' });
 
 // Document: _id (vom Type ObjectID) und __v als Attribute
-export type FilmDocument = Document<ObjectID, any, Film> &
-    Film & { _id: ObjectID }; // eslint-disable-line @typescript-eslint/naming-convention
+// eslint-disable-next-line max-len
+export type FilmDocument = Film & mongoose.Document<ObjectID, any, Film> & { _id: ObjectID }; // eslint-disable-line @typescript-eslint/naming-convention
 
 filmSchema.plugin(optimistic);
 
