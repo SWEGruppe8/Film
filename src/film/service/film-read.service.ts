@@ -1,3 +1,7 @@
+// eslint-disable-next-line eslint-comments/disable-enable-pair
+/* eslint-disable security/detect-non-literal-regexp */
+// eslint-disable-next-line eslint-comments/disable-enable-pair
+/* eslint-disable security-node/non-literal-reg-expr */
 /**
  * Das Modul besteht aus der Klasse {@linkcode AuthService} für die
  * Authentifizierung.
