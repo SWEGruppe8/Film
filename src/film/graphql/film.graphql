@@ -30,6 +30,7 @@ type Mutation {
     genre: Genre
     studio: Studio!
     online: String
+    datum: String
     homepage: String
     schlagwoerter: [String]
   ): String
@@ -48,6 +49,7 @@ type Film {
   genre: Genre
   studio: Studio
   online: String
+  datum: String
   homepage: String
   schlagwoerter: [String]
 }
@@ -72,6 +74,7 @@ input FilmUpdateInput {
     genre: Genre
     studio: Studio!
     online: String
+    datum: String
     homepage: String
     schlagwoerter: [String]
 }
