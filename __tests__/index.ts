@@ -15,6 +15,16 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 export type { FilmDTO, FilmeDTO } from '../src/film/rest/film-get.controller';
-export type { Film } from '../src/film/entity';
-export type { FilmDTO as FilmDTOGraphQL } from '../src/film/graphql/film-query.resolver';
-export { MAX_RATING } from '../src/film/service';
+export type { Film } from '../src/film/entity/index.js';
+export type { FilmDTO as FilmDTOGraphQL } from '../src/film/graphql/film-query.resolver.js';
+export { MAX_RATING } from '../src/film/service/index.js';
+export { loginGraphQL, loginRest } from './login.js';
+export {
+    apiPath,
+    createTestserver,
+    host,
+    httpsAgent,
+    loginPath,
+    port,
+    shutdownTestserver,
+} from './testserver.js';

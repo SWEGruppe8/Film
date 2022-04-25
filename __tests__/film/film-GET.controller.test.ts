@@ -26,16 +26,16 @@ import {
     shutdownTestserver,
 } from '../testserver';
 import axios, { type AxiosInstance, type AxiosResponse } from 'axios';
-import { type FilmeDTO } from '../film';
+import { type FilmeDTO } from '..';
 import { HttpStatus } from '@nestjs/common';
 import each from 'jest-each';
 
 // -----------------------------------------------------------------------------
 // T e s t d a t e n
 // -----------------------------------------------------------------------------
-const titelVorhanden = ['a', 't', 'g'];
+const titelVorhanden = ['Matrix', 'Herbert', 'Sailor'];
 const titelNichtVorhanden = ['xx', 'yy'];
-const schlagwoerterVorhanden = ['LIEBE', 'SPANNUNG', 'GRUSELIG'];
+const schlagwoerterVorhanden = ['LIEBE', 'SPANNEND', 'GRUSELIG'];
 const schlagwoerterNichtVorhanden = ['csharp', 'php'];
 
 // -----------------------------------------------------------------------------
