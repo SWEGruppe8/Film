@@ -19,7 +19,7 @@
 
 // siehe auch https://studio.apollographql.com/sandbox/explorer
 
-### Suche id, titel, genre und version von allen Filmen
+### Suche Id, Titel, Genre und Version von allen Filmen
 POST {{graphQlUrl}}
 Content-Type: application/json
 X-REQUEST-TYPE: GraphQL
@@ -33,7 +33,7 @@ X-REQUEST-TYPE: GraphQL
   }
 }
 
-### Suche titel, genre, studio und version von einem Film mit vorhandener Film-ID
+### Suche Titel, Genre, Studio und Version von einem Film mit vorhandener Film-ID
 POST {{graphQlUrl}}
 Content-Type: application/json
 X-REQUEST-TYPE: GraphQL
@@ -66,12 +66,12 @@ query ($id: ID! = "999999999999999999999999") {
   "id": "999999999999999999999999"
 }
 
-### Suche genre von Filme mit vorhandenem Titel
+### Suche Genre von Filmen mit vorhandenem Titel
 POST {{graphQlUrl}}
 Content-Type: application/json
 X-REQUEST-TYPE: GraphQL
 
-query ($titel: String = "Alpha") {
+query ($titel: String = "Matrix") {
   filme(titel: $titel) {
     genre
   }
@@ -81,7 +81,7 @@ query ($titel: String = "Alpha") {
   "titel": "Matrix"
 }
 
-### Suche titel, genre und schlagwoerter von Filmern mit vorhandenem Titel
+### Suche Titel, Genre und Schlagwoerter von Filmern mit vorhandenem Titel
 POST {{graphQlUrl}}
 Content-Type: application/json
 X-REQUEST-TYPE: GraphQL
@@ -98,7 +98,7 @@ query ($titel: String = "a") {
   "titel": "a"
 }
 
-### Suche genre von Filmen mit NICHT-vorhandenem Titel
+### Suche Genre von Filmen mit NICHT-vorhandenem Titel
 POST {{graphQlUrl}}
 Content-Type: application/json
 X-REQUEST-TYPE: GraphQL
