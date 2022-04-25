@@ -24,7 +24,7 @@ import {
     httpsAgent,
     port,
     shutdownTestserver,
-} from '../testserver';
+} from '../index.js';
 import axios, { type AxiosInstance, type AxiosResponse } from 'axios';
 import { type FilmeDTO } from '..';
 import { HttpStatus } from '@nestjs/common';
@@ -33,7 +33,7 @@ import each from 'jest-each';
 // -----------------------------------------------------------------------------
 // T e s t d a t e n
 // -----------------------------------------------------------------------------
-const titelVorhanden = ['Matrix', 'Herbert', 'Sailor'];
+const titelVorhanden = ['a', 'e', 'i'];
 const titelNichtVorhanden = ['xx', 'yy'];
 const schlagwoerterVorhanden = ['LIEBE', 'SPANNEND', 'GRUSELIG'];
 const schlagwoerterNichtVorhanden = ['csharp', 'php'];

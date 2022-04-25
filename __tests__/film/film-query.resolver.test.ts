@@ -15,18 +15,17 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-
-import { type GraphQLRequest, type GraphQLResponse } from 'apollo-server-types';
-import { afterAll, beforeAll, describe, test } from '@jest/globals';
-import axios, { type AxiosInstance, type AxiosResponse } from 'axios';
 import {
+    type FilmDTOGraphQL,
     createTestserver,
     host,
     httpsAgent,
     port,
     shutdownTestserver,
-} from '../testserver';
-import { type FilmDTOGraphQL } from '../index.js';
+} from '../index.js';
+import { type GraphQLRequest, type GraphQLResponse } from 'apollo-server-types';
+import { afterAll, beforeAll, describe, test } from '@jest/globals';
+import axios, { type AxiosInstance, type AxiosResponse } from 'axios';
 import { HttpStatus } from '@nestjs/common';
 import each from 'jest-each';
 

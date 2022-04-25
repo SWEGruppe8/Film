@@ -28,17 +28,17 @@
 //    needle      https://github.com/tomas/needle
 //    ky          https://github.com/sindresorhus/ky
 
-import { afterAll, beforeAll, describe } from '@jest/globals';
 import {
+    type FilmDTO,
     apiPath,
     createTestserver,
     host,
     httpsAgent,
     port,
     shutdownTestserver,
-} from '../testserver';
+} from '../index.js';
+import { afterAll, beforeAll, describe } from '@jest/globals';
 import axios, { type AxiosInstance, type AxiosResponse } from 'axios';
-import { type FilmDTO } from '../index.js';
 import { HttpStatus } from '@nestjs/common';
 import each from 'jest-each';
 
