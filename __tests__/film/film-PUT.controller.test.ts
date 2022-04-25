@@ -33,7 +33,7 @@ import { loginRest } from '../login';
 // -----------------------------------------------------------------------------
 // T e s t d a t e n
 // -----------------------------------------------------------------------------
-const geaendertesFilm: Omit<Film, 'studio'> = {
+const geaenderterFilm: Omit<Film, 'studio'> = {
     // studio wird nicht geaendet
     titel: 'Geaendert',
     rating: 1,
@@ -45,7 +45,7 @@ const geaendertesFilm: Omit<Film, 'studio'> = {
 };
 const idVorhanden = '000000000000000000000040';
 
-const geaendertesFilmIdNichtVorhanden: Omit<Film, 'homepage' | 'studio'> = {
+const geaenderterFilmIdNichtVorhanden: Omit<Film, 'homepage' | 'studio'> = {
     titel: 'Nichtvorhanden',
     rating: 1,
     genre: 'ACTION',
@@ -55,7 +55,7 @@ const geaendertesFilmIdNichtVorhanden: Omit<Film, 'homepage' | 'studio'> = {
 };
 const idNichtVorhanden = '999999999999999999999999';
 
-const geaendertesFilmInvalid: Record<string, unknown> = {
+const geaenderterFilmInvalid: Record<string, unknown> = {
     titel: '?!$',
     rating: -1,
     genre: 'UNSICHTBAR',
@@ -114,7 +114,7 @@ describe('PUT /api/:id', () => {
         // when
         const response: AxiosResponse<string> = await client.put(
             url,
-            geaendertesFilm,
+            geaenderterFilm,
             { headers },
         );
 
@@ -135,7 +135,7 @@ describe('PUT /api/:id', () => {
         // when
         const response: AxiosResponse<string> = await client.put(
             url,
-            geaendertesFilmIdNichtVorhanden,
+            geaenderterFilmIdNichtVorhanden,
             { headers },
         );
 
@@ -158,7 +158,7 @@ describe('PUT /api/:id', () => {
         // when
         const response: AxiosResponse<string> = await client.put(
             url,
-            geaendertesFilmInvalid,
+            geaenderterFilmInvalid,
             { headers },
         );
 
@@ -187,7 +187,7 @@ describe('PUT /api/:id', () => {
         // when
         const response: AxiosResponse<string> = await client.put(
             url,
-            geaendertesFilm,
+            geaenderterFilm,
             { headers },
         );
 
@@ -228,7 +228,7 @@ describe('PUT /api/:id', () => {
         // when
         const response: AxiosResponse<Record<string, any>> = await client.put(
             url,
-            geaendertesFilm,
+            geaenderterFilm,
             { headers },
         );
 
@@ -248,7 +248,7 @@ describe('PUT /api/:id', () => {
         // when
         const response: AxiosResponse<Record<string, any>> = await client.put(
             url,
-            geaendertesFilm,
+            geaenderterFilm,
             { headers },
         );
 
