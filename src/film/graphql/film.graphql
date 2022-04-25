@@ -29,7 +29,8 @@ type Mutation {
     rating: Int
     genre: Genre
     studio: Studio!
-    online: String
+    online: Boolean
+    datum: String
     homepage: String
     schlagwoerter: [String]
   ): String
@@ -47,7 +48,8 @@ type Film {
   rating: Int
   genre: Genre
   studio: Studio
-  online: String
+  online: Boolean
+  datum: String
   homepage: String
   schlagwoerter: [String]
 }
@@ -71,7 +73,8 @@ input FilmUpdateInput {
     rating: Int
     genre: Genre
     studio: Studio!
-    online: String
+    online: Boolean
+    datum: String
     homepage: String
     schlagwoerter: [String]
 }
