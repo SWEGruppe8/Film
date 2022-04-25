@@ -14,9 +14,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-import { nodeConfig, paths } from '../src/config';
-import { Agent } from 'https';
-import { AppModule } from '../src/app.module';
+import { nodeConfig, paths } from '../src/config/index.js';
+import { Agent } from 'node:https';
+import { AppModule } from '../src/app.module.js';
 import { type INestApplication } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 
