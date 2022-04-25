@@ -78,7 +78,7 @@ query ($titel: String = "Alpha") {
 }
 
 {
-  "titel": "Alpha"
+  "titel": "Matrix"
 }
 
 ### Suche titel, genre und schlagwoerter von Filmern mit vorhandenem Titel
