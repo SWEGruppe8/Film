@@ -59,13 +59,6 @@ Authorization: Bearer {{login.response.body.$.token}}
 
 < .\json\film-neu.titel-exists.json
 
-### Neues Film anlegen, aber die ISBN-Nummer existiert bereits
-POST {{restUrl}}
-Content-Type: application/json
-Authorization: Bearer {{login.response.body.$.token}}
-
-< .\json\film-neu.isbn-exists.json
-
 ### Neues Film ohne Login anlegen
 POST {{restUrl}}
 Content-Type: application/json

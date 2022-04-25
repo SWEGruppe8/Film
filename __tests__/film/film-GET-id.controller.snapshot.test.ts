@@ -40,7 +40,7 @@ import {
     shutdownTestserver,
 } from '../testserver';
 import axios, { type AxiosInstance, type AxiosResponse } from 'axios';
-import { type FilmDTO } from '../film';
+import { type FilmDTO } from '../index.js';
 import { HttpStatus } from '@nestjs/common';
 import each from 'jest-each';
 

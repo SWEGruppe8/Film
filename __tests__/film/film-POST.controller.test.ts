@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { type Film, MAX_RATING } from '../film';
+import { type Film, MAX_RATING } from '../index.js';
 import { afterAll, beforeAll, describe, test } from '@jest/globals';
 import {
     apiPath,

@@ -26,7 +26,7 @@ import {
     port,
     shutdownTestserver,
 } from '../testserver';
-import { type FilmDTOGraphQL } from '../film';
+import { type FilmDTOGraphQL } from '../index.js';
 import { HttpStatus } from '@nestjs/common';
 import each from 'jest-each';
 
