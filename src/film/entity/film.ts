@@ -98,7 +98,7 @@ export class Film {
     @ApiProperty({ example: 'COMEDY', type: String })
     readonly genre: Genre | '' | null | undefined;
 
-    @Prop({ type: String, required: true, enum: ['DISNEY', 'WARNER', 'UNIVERSIAL STUDIOS'] })
+    @Prop({ type: String, required: true, enum: ['DISNEY', 'WARNER', 'UNIVERSAL'] })
     @ApiProperty({ example: 'DISNEY', type: String })
     readonly studio: Studio | '' | null | undefined;
 
