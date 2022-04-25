@@ -15,16 +15,17 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { type Film, MAX_RATING } from '../index.js';
-import { afterAll, beforeAll, describe, test } from '@jest/globals';
 import {
+    type Film,
+    type MAX_RATING,
     apiPath,
     createTestserver,
     host,
     httpsAgent,
     port,
     shutdownTestserver,
-} from '../testserver';
+} from '../index.js';
+import { afterAll, beforeAll, describe, test } from '@jest/globals';
 import axios, { type AxiosInstance, type AxiosResponse } from 'axios';
 import { HttpStatus } from '@nestjs/common';
 import { loginRest } from '../login';
