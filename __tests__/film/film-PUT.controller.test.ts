@@ -17,7 +17,7 @@
 
 import {
     type Film,
-    type MAX_RATING,
+    MAX_RATING,
     apiPath,
     createTestserver,
     host,
