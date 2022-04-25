@@ -76,7 +76,7 @@ mutation {
   )
 }
 
-### Neuer Film mit ungueltigen Daten anlegen
+### Neuen Film mit ungueltigen Daten anlegen
 POST {{graphQlUrl}}
 Content-Type: application/json
 Authorization: Bearer {{login.response.body.$.data.login.token}}
@@ -95,7 +95,7 @@ mutation {
   )
 }
 
-### Vorhandener Film aktualisieren
+### Vorhandenen Film aktualisieren
 POST {{graphQlUrl}}
 Content-Type: application/json
 Authorization: Bearer {{login.response.body.$.data.login.token}}
@@ -121,7 +121,7 @@ mutation {
   )
 }
 
-### Vorhandener Film mit ungueltigen Werten aktualisieren
+### Vorhandenen Film mit ungueltigen Werten aktualisieren
 POST {{graphQlUrl}}
 Content-Type: application/json
 Authorization: Bearer {{login.response.body.$.data.login.token}}
@@ -144,7 +144,7 @@ mutation {
   )
 }
 
-### Nicht-Vorhandener Film aktualisieren
+### Nicht-Vorhandenen Film aktualisieren
 POST {{graphQlUrl}}
 Content-Type: application/json
 Authorization: Bearer {{login.response.body.$.data.login.token}}
@@ -170,7 +170,7 @@ mutation {
   )
 }
 
-### Vorhandener Film loeschen
+### Vorhandenen Film loeschen
 POST {{graphQlUrl}}
 Content-Type: application/json
 Authorization: Bearer {{login.response.body.$.data.login.token}}
