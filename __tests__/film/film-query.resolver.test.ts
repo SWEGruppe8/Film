@@ -38,9 +38,9 @@ const idVorhanden = [
     '000000000000000000000003',
 ];
 
-const titelVorhanden = ['Alpha', 'Beta', 'Gamma'];
+const titelVorhanden = ['Matrix', 'Herbert', 'Sailor'];
 
-const teilTitelVorhanden = ['a', 't', 'g'];
+const teilTitelVorhanden = ['a', 't', 'r'];
 
 const teilTitelNichtVorhanden = ['Xyz', 'abc'];
 
