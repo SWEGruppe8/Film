@@ -317,7 +317,7 @@ describe('GraphQL Mutations', () => {
         const { message, path, extensions } = error!;
 
         expect(message).toBe(
-            `Es gibt keinen Film mit der ID ${id.toLowerCase()}`,
+            `Es gibt kein Film mit der ID ${id.toLowerCase()}`,
         );
         expect(path).toBeDefined();
         expect(path!![0]).toBe('update');
