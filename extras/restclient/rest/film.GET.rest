@@ -43,29 +43,26 @@ GET {{restUrl}}?titel=a
 ### Suche mit nicht-vorhandenem Titel
 GET {{restUrl}}?titel=xxx
 
-### Suche mit vorhandener ISBN
-GET {{restUrl}}?isbn=978-3897225831
-
 ### Suche mit vorhandenen Schlagwoertern
-GET {{restUrl}}?javascript=true&typescript=true
+GET {{restUrl}}?spannend=true&gruselig=true
 
-### Suche mit vorhandenem Schlagwort "JAVASCRIPT"
-GET {{restUrl}}?javascript=true
+### Suche mit vorhandenem Schlagwort "LIEBE"
+GET {{restUrl}}?liebe=true
 
-### Suche mit vorhandenem Schlagwort "TYPESCRIPT"
-GET {{restUrl}}?typescript=true
+### Suche mit vorhandenem Schlagwort "SPANNEND"
+GET {{restUrl}}?spannend=true
 
 ### Suche mit nicht-vorhandener Property
-GET {{restUrl}}?php=true
+GET {{restUrl}}?lustig=true
 
-### Suche mit gueltiger Filmart
-GET {{restUrl}}?art=KINDLE
+### Suche mit gueltigem Genre
+GET {{restUrl}}?genre=ROMANCE
 
 ### Suche mit gueltigem Rating
 GET {{restUrl}}?rating=1
 
-### Suche lieferbare Filme
-GET {{restUrl}}?lieferbar=true
+### Suche online Filme
+GET {{restUrl}}?online=true
 
 ### Suche mit vorhandener Property
 GET {{restUrl}}?foo=bar
