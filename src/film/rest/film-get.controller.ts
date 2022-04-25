@@ -16,12 +16,6 @@ import {
     ApiTags,
 } from '@nestjs/swagger';
 import {
-    Film,
-    type FilmDocument,
-    type Genre,
-    type Studio,
-} from '../entity/index.js';
-import {
     Controller,
     Get,
     Headers,
@@ -33,6 +27,12 @@ import {
     UseGuards,
     UseInterceptors,
 } from '@nestjs/common';
+import {
+    Film,
+    type FilmDocument,
+    type Genre,
+    type Studio,
+} from '../entity/index.js';
 import { JwtAuthGuard, RolesGuard } from '../../security/index.js';
 import { Request, Response } from 'express';
 import { ResponseTimeInterceptor, getLogger } from '../../logger/index.js';
@@ -297,4 +297,3 @@ export class FilmGetController {
         return filmDTO;
     }
 }
-/* eslint-enable max-lines */

@@ -31,7 +31,7 @@
 [project]
 id = "com.acme.film"
 name = "Microservice film"
-version = "1.0.0"
+version = "latest"
 authors = ["Juergen.Zimmermann@h-ka.de"]
 
 # array of tables
