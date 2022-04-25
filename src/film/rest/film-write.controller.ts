@@ -1,4 +1,3 @@
-/* eslint-disable max-lines */
 /*
  * Copyright (C) 2021 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
@@ -47,8 +46,8 @@ import {
     UseInterceptors,
 } from '@nestjs/common';
 import {
-    FilmWriteService,
     type CreateError,
+    FilmWriteService,
     type UpdateError,
 } from '../service/index.js';
 import { JwtAuthGuard, Roles, RolesGuard } from '../../security/index.js';
@@ -298,4 +297,3 @@ export class FilmWriteController {
         }
     }
 }
-/* eslint-enable max-lines */

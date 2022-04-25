@@ -39,7 +39,7 @@ export class FilmReadService {
 
         if (!ObjectID.isValid(idStr)) {
             this.#logger.debug('findById: Ungueltige ObjectID');
-            return undefined;
+            return;
         }
 
         const id = new ObjectID(idStr);
@@ -61,6 +61,7 @@ export class FilmReadService {
             return this.#findAll();
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         const { titel, spannend, gruselig, liebe, ...dbFilter } = filter;
         if (this.#checkInvalidProperty(dbFilter)) {
             return [];
@@ -72,9 +73,8 @@ export class FilmReadService {
             typeof titel === 'string'
         ) {
             dbFilter.titel =
-                titel.length < 10
-                    ? new RegExp(titel, 'iu')
-                    : titel;
+                // eslint-disable-next-line @typescript-eslint/no-magic-numbers
+                titel.length < 10 ? new RegExp(titel, 'iu') : titel;
         }
 
         const schlagwoerter = [];
