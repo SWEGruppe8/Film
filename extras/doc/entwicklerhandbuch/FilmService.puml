@@ -23,7 +23,6 @@ package film {
   package service #DDDDDD {
     class FilmInvalid
     class TitelExists
-    class IsbnExists
     class VersionInvalid
     class VersionOutdated
 
@@ -33,7 +32,6 @@ package film {
     FilmService .left.> FilmValidationService
     FilmService ..> FilmInvalid
     FilmService ..> TitelExists
-    FilmService ..> IsbnExists
     FilmService ..> VersionInvalid
     FilmService ..> VersionOutdated
     FilmService .up.> FilterQuery
@@ -42,8 +40,8 @@ package film {
     class FilmService << control >> <<@Injectable()>> {
       + async findById(id: string): Promise<FilmDocument | undefined>
       + async find(query?: FilterQuery<FilmDocument>): Promise<FilmDocument[]>
-      + async create(film: Film): Promise<string|FilmInvalid|TitelExists|IsbnExists>
-      + async update(film: Film, id: string, version: string): Promise<number|FilmInvalid|TitelExists|IsbnExists|VersionInvalid|VersionOutdated>
+      + async create(film: Film): Promise<string|FilmInvalid|TitelExists>
+      + async update(film: Film, id: string, version: string): Promise<number|FilmInvalid|TitelExists|VersionInvalid|VersionOutdated>
       + async delete(id: string): Promise<boolean>
     }
 
