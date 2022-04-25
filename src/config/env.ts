@@ -96,7 +96,7 @@ const authConfigEnv: AuthConfigEnv = {
     // 1d = 1 Tag, 1h = 1 Stunde, 1m = 1 Minute, 1s = 1 Sekunde
     expiresIn: JWT_EXPIRES_IN ?? '1h',
     issuer: JWT_ISSUER ?? 'https://hka.de/JuergenZimmermann',
-    password: USER_PASSWORD_ENCODED ?? '! To Be Changed !',
+    password: USER_PASSWORD_ENCODED ?? 'p',
 };
 
 interface LogConfigEnv {
