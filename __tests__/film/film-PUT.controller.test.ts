@@ -171,7 +171,7 @@ describe('PUT /api/:id', () => {
                 'Ein Filmtitel muss mit einem Buchstaben, einer Ziffer oder _ beginnen.',
                 `Eine Bewertung muss zwischen 0 und ${MAX_RATING} liegen.`,
                 'Das Genre eines Filmes muss CCOMEDY, ACTION oder ROMANCE sein.',
-                'Das Studio eines Filmes muss DISNEY, WARNER BROS oder UNIVERSAL STUDIOS.',
+                'Das Studio eines Filmes muss DISNEY, WARNER oder UNIVERSAL.',
                 'Das Datum muss im Format yyyy-MM-dd sein.',
             ]),
         );

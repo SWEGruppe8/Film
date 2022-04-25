@@ -32,8 +32,8 @@ package film.entity {
 
   enum Studio {
     DISNEY
-    WARNER BROS
-    UNIVERSAL STUDIOS
+    WARNER
+    UNIVERSAL
   }
 
   class Film <<entity>> <<@Schema>> {

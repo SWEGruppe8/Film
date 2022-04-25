@@ -64,7 +64,7 @@ enum Genre {
 # Enum-Typ fuer den Verlag eines Filmes
 enum Studio {
   DISNEY, 
-  WARNER BROS, 
+  WARNER, 
   UNIVERSAL STUDIO
 }
 
