@@ -23,7 +23,7 @@ import {
     httpsAgent,
     port,
     shutdownTestserver,
-} from '../testserver';
+} from '../index.js';
 import axios, { type AxiosInstance, type AxiosResponse } from 'axios';
 import { HttpStatus } from '@nestjs/common';
 import { loginRest } from '../login';
