@@ -170,8 +170,8 @@ describe('PUT /api/:id', () => {
             expect.arrayContaining([
                 'Ein Filmtitel muss mit einem Buchstaben, einer Ziffer oder _ beginnen.',
                 `Eine Bewertung muss zwischen 0 und ${MAX_RATING} liegen.`,
-                'Das Genre eines Filmes muss CCOMEDY, ACTION oder ROMANCE sein.',
-                'Das Studio eines Filmes muss DISNEY, WARNER oder UNIVERSAL.',
+                'Das Genre eines Filmes muss COMEDY, ACTION oder ROMANCE sein.',
+                'Das Studio eines Filmes muss DISNEY, WARNER oder UNIVERSAL sein.',
                 'Das Datum muss im Format yyyy-MM-dd sein.',
             ]),
         );
