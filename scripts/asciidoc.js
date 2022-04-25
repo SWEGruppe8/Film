@@ -19,11 +19,13 @@
 // https://asciidoctor-docs.netlify.com
 // https://asciidoctor.org
 
-const asciidoctor = require('asciidoctor')();
+import asciidoctorNs from 'asciidoctor';
 // https://github.com/eshepelyuk/asciidoctor-plantuml.js ist deprecated
-const kroki = require('asciidoctor-kroki');
-const { join } = require('path');
+import kroki from 'asciidoctor-kroki';
+import { join } from 'node:path';
+import url from 'node:url';
 
+const asciidoctor = asciidoctorNs();
 console.log(`Asciidoctor.js ${asciidoctor.getVersion()}`);
 
 kroki.register(asciidoctor.Extensions);
@@ -39,6 +41,7 @@ asciidoctor.convertFile(
     join('extras', 'doc', 'entwicklerhandbuch', 'entwicklerhandbuch.adoc'),
     options,
 );
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 console.log(
     `HTML-Datei ${join(
         __dirname,
