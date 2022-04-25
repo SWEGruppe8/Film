@@ -33,7 +33,7 @@ export const jsonSchema: GenericJsonSchema = {
         },
         studio: {
             type: 'string',
-            enum: ['DISNEY', 'WARNER BROS', 'UNIVERSIAL STUDIOS', ''],
+            enum: ['DISNEY', 'WARNER', 'UNIVERSIAL STUDIOS', ''],
         },
 
         online: { type: 'boolean' },
@@ -53,7 +53,7 @@ export const jsonSchema: GenericJsonSchema = {
             titel: 'Ein Filmtitel muss mit einem Filmstaben, einer Ziffer oder _ beginnen.',
             rating: 'Eine Bewertung muss zwischen 0 und 5 liegen.',
             genre: 'Das Genre eines Films muss COMEDY, ACTION oder ROMANCE sein.',
-            verlag: 'Der Verlag eines Films muss DISNEY, WARNER BROS oder UNIVERSIAL STUDIOS sein.',
+            verlag: 'Der Verlag eines Films muss DISNEY, WARNER oder UNIVERSIAL STUDIOS sein.',
             online: '"online" muss auf true oder false gesetzt sein.',
             datum: 'Das Datum muss im Format yyyy-MM-dd sein.',
             homepage: 'Die Homepage ist nicht korrekt.',

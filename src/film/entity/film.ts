@@ -36,7 +36,7 @@ import mongoose from 'mongoose';
 /**
  * Alias-Typ für gültige Strings bei Herausgebern.
  */
-export type Studio = 'DISNEY' | 'UNIVERSAL STUDIOS' | 'WARNER BROS';
+export type Studio = 'DISNEY' | 'UNIVERSAL' | 'WARNER';
 
 /**
  * Alias-Typ für gültige Strings bei der Art eines Filmes.
@@ -98,7 +98,7 @@ export class Film {
     @ApiProperty({ example: 'COMEDY', type: String })
     readonly genre: Genre | '' | null | undefined;
 
-    @Prop({ type: String, required: true, enum: ['DISNEY', 'WARNER BROS', 'UNIVERSIAL STUDIOS'] })
+    @Prop({ type: String, required: true, enum: ['DISNEY', 'WARNER', 'UNIVERSIAL STUDIOS'] })
     @ApiProperty({ example: 'DISNEY', type: String })
     readonly studio: Studio | '' | null | undefined;
 
