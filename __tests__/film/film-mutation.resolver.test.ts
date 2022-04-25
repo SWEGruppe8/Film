@@ -25,7 +25,7 @@ import {
     httpsAgent,
     port,
     shutdownTestserver,
-} from '../testserver';
+} from '../index.js';
 import { HttpStatus } from '@nestjs/common';
 import RE2 from 're2';
 import each from 'jest-each';
@@ -70,14 +70,14 @@ describe('GraphQL Mutations', () => {
             query: `
                 mutation {
                     create(
-                        titel: 'Test',
+                        titel: "Test",
                         rating: 1,
-                        genre: 'COMEDY',
-                        studio: 'DISNEY',
+                        genre: COMEDY,
+                        studio: DISNEY,
                         online: true,
-                        datum: '2000-11-05',
-                        homepage: 'https://test.de',
-                        schlagwoerter: ['SPANNEND'],
+                        datum: "2000-11-05",
+                        homepage: "https://test.de",
+                        schlagwoerter: ["SPANNEND"],
                     )
                 }
             `,
