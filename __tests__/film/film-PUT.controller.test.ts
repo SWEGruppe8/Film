@@ -33,11 +33,11 @@ import { loginRest } from '../login';
 // -----------------------------------------------------------------------------
 // T e s t d a t e n
 // -----------------------------------------------------------------------------
-const geaenderterFilm: Omit<Film, 'studio'> = {
-    // studio wird nicht geaendet
+const geaenderterFilm: Film = {
     titel: 'Geaendert',
     rating: 1,
     genre: 'ACTION',
+    studio: 'WARNER',
     online: false,
     datum: '2022-02-03',
     homepage: 'https://test.te',
@@ -45,12 +45,14 @@ const geaenderterFilm: Omit<Film, 'studio'> = {
 };
 const idVorhanden = '000000000000000000000040';
 
-const geaenderterFilmIdNichtVorhanden: Omit<Film, 'homepage' | 'studio'> = {
+const geaenderterFilmIdNichtVorhanden: Film = {
     titel: 'Nichtvorhanden',
     rating: 1,
     genre: 'ACTION',
+    studio: 'UNIVERSAL',
     online: true,
     datum: '2022-02-04',
+    homepage: 'https://nichtvorhanden.de',
     schlagwoerter: ['SPANNEND', 'GRUSELIG'],
 };
 const idNichtVorhanden = '999999999999999999999999';
@@ -144,7 +146,7 @@ describe('PUT /api/:id', () => {
 
         expect(status).toBe(HttpStatus.PRECONDITION_FAILED);
         expect(data).toBe(
-            `Es gibt keinen Film mit der ID "${idNichtVorhanden}".`,
+            `Es gibt kein Film mit der ID "${idNichtVorhanden}".`,
         );
     });
 
