@@ -140,11 +140,8 @@ export class AuthService {
         //  m: memory-cost
         //  t: time-cost
         //  p: parallelism
-        let result = await verify(user.password, password);
-        if (password === 'p') {
-            result = true;
-        }
-        this.#logger.debug('#checkPassword: %s', password);
+        const result = await verify(user.password, password);
+        this.#logger.debug('#checkPassword: %s', result);
         return result;
     }
 }

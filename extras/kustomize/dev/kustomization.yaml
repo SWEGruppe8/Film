@@ -41,7 +41,7 @@ configMapGenerator:
       - DB_POPULATE_FILES="true"
       - DB_AUTO_INDEX="true"
       - K8S_TLS="false"
-      - USER_PASSWORD_ENCODED=$2b$10$YTg4.iW.FPRqHExVLRf05Ob/z/BQqjUxJgncct2TgxGBjl4cCUNGS
+      - USER_PASSWORD_ENCODED=$argon2i$v=19$m=4096,t=3,p=1$aaxA2v/9rRSPGkwYN+NQog$27Huii1XtD3iEd62fog+04G26LRPZMHoYCI6AGKTL8M
 
 # Umgebungsvariable, Labels, Annotationen, Images, Tags usw. ueberschreiben
 # https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/#customizing
